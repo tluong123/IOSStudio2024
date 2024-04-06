@@ -16,6 +16,10 @@ struct IOSStudioApp: App {
             ContentView()
         }
         
-        
+        ImmersiveSpace(id: "ImmersiveView")
+        {
+            ImmersiveView()
+        }
+        .immersionStyle(selection: $immersionMode, in: .progressive)
     }
 }
