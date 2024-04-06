@@ -8,22 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		E11E94692BBBB5F700BC516A /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = E11E94682BBBB5F700BC516A /* RealityKitContent */; };
-		E11E946B2BBBB5F700BC516A /* Week7App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E946A2BBBB5F700BC516A /* Week7App.swift */; };
-		E11E946D2BBBB5F700BC516A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E946C2BBBB5F700BC516A /* ContentView.swift */; };
-		E11E946F2BBBB5F800BC516A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11E946E2BBBB5F800BC516A /* Assets.xcassets */; };
-		E11E94722BBBB5F800BC516A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11E94712BBBB5F800BC516A /* Preview Assets.xcassets */; };
-		E11E947A2BBBB65900BC516A /* fullImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E94792BBBB65900BC516A /* fullImmersiveView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B8B862272BC0E69D00C671C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8B862222BC0E69D00C671C3 /* IOSStudio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B8B861FF2BC0E69B00C671C3;
+			remoteInfo = IOSStudio;
+		};
+		B8B862292BC0E69D00C671C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8B862222BC0E69D00C671C3 /* IOSStudio.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B8B862142BC0E69D00C671C3;
+			remoteInfo = IOSStudioTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B8B862222BC0E69D00C671C3 /* IOSStudio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IOSStudio.xcodeproj; path = ../../../Desktop/test123/IOSStudio/IOSStudio.xcodeproj; sourceTree = "<group>"; };
 		E11E94632BBBB5F700BC516A /* Week7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11E94672BBBB5F700BC516A /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
-		E11E946A2BBBB5F700BC516A /* Week7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week7App.swift; sourceTree = "<group>"; };
-		E11E946C2BBBB5F700BC516A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E11E946E2BBBB5F800BC516A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E11E94712BBBB5F800BC516A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E11E94732BBBB5F800BC516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E11E94792BBBB65900BC516A /* fullImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fullImmersiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,10 +45,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8B862232BC0E69D00C671C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8B862282BC0E69D00C671C3 /* IOSStudio.app */,
+				B8B8622A2BC0E69D00C671C3 /* IOSStudioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E11E945A2BBBB5F700BC516A = {
 			isa = PBXGroup;
 			children = (
-				E11E94652BBBB5F700BC516A /* Week7 */,
+				B8B862222BC0E69D00C671C3 /* IOSStudio.xcodeproj */,
 				E11E94662BBBB5F700BC516A /* Packages */,
 				E11E94642BBBB5F700BC516A /* Products */,
 			);
@@ -55,33 +71,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E11E94652BBBB5F700BC516A /* Week7 */ = {
-			isa = PBXGroup;
-			children = (
-				E11E946A2BBBB5F700BC516A /* Week7App.swift */,
-				E11E946C2BBBB5F700BC516A /* ContentView.swift */,
-				E11E94792BBBB65900BC516A /* fullImmersiveView.swift */,
-				E11E946E2BBBB5F800BC516A /* Assets.xcassets */,
-				E11E94732BBBB5F800BC516A /* Info.plist */,
-				E11E94702BBBB5F800BC516A /* Preview Content */,
-			);
-			path = Week7;
-			sourceTree = "<group>";
-		};
 		E11E94662BBBB5F700BC516A /* Packages */ = {
 			isa = PBXGroup;
 			children = (
 				E11E94672BBBB5F700BC516A /* RealityKitContent */,
 			);
 			path = Packages;
-			sourceTree = "<group>";
-		};
-		E11E94702BBBB5F800BC516A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				E11E94712BBBB5F800BC516A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E11E945E2BBBB5F700BC516A /* Build configuration list for PBXProject "Week7" */;
+			buildConfigurationList = E11E945E2BBBB5F700BC516A /* Build configuration list for PBXProject "IOSStudio" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,6 +128,12 @@
 			mainGroup = E11E945A2BBBB5F700BC516A;
 			productRefGroup = E11E94642BBBB5F700BC516A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B8B862232BC0E69D00C671C3 /* Products */;
+					ProjectRef = B8B862222BC0E69D00C671C3 /* IOSStudio.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E11E94622BBBB5F700BC516A /* Week7 */,
@@ -140,13 +141,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		B8B862282BC0E69D00C671C3 /* IOSStudio.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = IOSStudio.app;
+			remoteRef = B8B862272BC0E69D00C671C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B8B8622A2BC0E69D00C671C3 /* IOSStudioTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IOSStudioTests.xctest;
+			remoteRef = B8B862292BC0E69D00C671C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		E11E94612BBBB5F700BC516A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11E94722BBBB5F800BC516A /* Preview Assets.xcassets in Resources */,
-				E11E946F2BBBB5F800BC516A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,9 +173,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11E946D2BBBB5F700BC516A /* ContentView.swift in Sources */,
-				E11E947A2BBBB65900BC516A /* fullImmersiveView.swift in Sources */,
-				E11E946B2BBBB5F700BC516A /* Week7App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E11E945E2BBBB5F700BC516A /* Build configuration list for PBXProject "Week7" */ = {
+		E11E945E2BBBB5F700BC516A /* Build configuration list for PBXProject "IOSStudio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E11E94742BBBB5F800BC516A /* Debug */,
