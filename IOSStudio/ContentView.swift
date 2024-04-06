@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Week7
-//
-//  Created by Avinash Singh on 2/4/2024.
-//
-
 import SwiftUI
 import RealityKit
 import RealityKitContent
@@ -23,7 +16,7 @@ struct ContentView: View {
             Button("Open Immersive Space") {
                 Task
                 {
-                    await openImmersiveSpace(id:"fullImmersiveView")
+                    await openImmersiveSpace(id:"ImmersiveView")
                 }
             }
             

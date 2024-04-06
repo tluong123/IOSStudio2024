@@ -1,15 +1,14 @@
 //
-//  Week7App.swift
-//  Week7
+//  IOSStudioApp.swift
+//  IOSStudio
 //
-//  Created by Avinash Singh on 2/4/2024.
+//  Created by Thomas on 6/4/2024.
 //
 
 import SwiftUI
 
 @main
-struct Week7App: App {
-    
+struct IOSStudioApp: App {
     @State var immersionMode: ImmersionStyle = .progressive
     
     var body: some Scene {
@@ -17,6 +16,6 @@ struct Week7App: App {
             ContentView()
         }
         
-        //test
+        
     }
 }
