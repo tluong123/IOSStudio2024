@@ -21,13 +21,31 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
+    def "human_thinking11" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @human thinking11.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (0.7, 0.7, 0.7)
+        float3 xformOp:translate = (3, 1.5, -1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
     def "human_ponder" (
         active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
         prepend references = @human ponder.usdz@
     )
     {
-        float3 xformOp:scale = (0.45, 0.45, 0.45)
-        float3 xformOp:translate = (0, 1, -1)
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (0.8, 0.8, 0.8)
+        float3 xformOp:translate = (3, 1.5, -1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
