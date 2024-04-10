@@ -15,6 +15,7 @@ struct IOSStudioApp: App {
         WindowGroup {
             ContentView()
         }
+        .defaultSize(CGSize(width: 400, height: 400))
         
         ImmersiveSpace(id: "ImmersiveView")
         {
