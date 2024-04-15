@@ -1,6 +1,7 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
+import AVFoundation
 
 struct ResponseView: View {
     @Environment(\.openWindow) private var openWindow
@@ -115,216 +116,220 @@ struct ResponseView: View {
         VStack {
             Text(question)
                 .padding()
-                .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-            VStack {
-                //button 1
-                Button(action: {
-                    round += 1
-                    print("It's round \(round)")
-                    
-                    switch round {
-                    case 2:
+                .multilineTextAlignment(.leading)
+                .onChange(of: question) { newQuestion in
+                    SpeechSynthesizerService.shared.speak(newQuestion)
+                }
+            
+            
+            
+            //button 1
+            Button(action: {
+                round += 1
+                print("It's round \(round)")
+                
+                switch round {
+                case 2:
+                    lastAnswer = 1
+                    question = dialogue.round2Question1
+                    button1 = dialogue.round2Question1Response1
+                    button2 = dialogue.round2Question1Response2
+                    button3 = dialogue.round2Question1Response3
+                case 3:
+                    switch lastAnswer {
+                    case 1:
                         lastAnswer = 1
-                        question = dialogue.round2Question1
-                        button1 = dialogue.round2Question1Response1
-                        button2 = dialogue.round2Question1Response2
-                        button3 = dialogue.round2Question1Response3
+                        question = dialogue.round3Question1
+                        button1 = dialogue.round3Question1Response1
+                        button2 = dialogue.round3Question1Response2
+                        button3 = dialogue.round3Question1Response3
+                    case 2:
+                        lastAnswer = 4
+                        question = dialogue.round3Question4
+                        button1 = dialogue.round3Question4Response10
+                        button2 = dialogue.round3Question4Response11
+                        button3 = dialogue.round3Question4Response12
                     case 3:
-                        switch lastAnswer {
-                        case 1:
-                            lastAnswer = 1
-                            question = dialogue.round3Question1
-                            button1 = dialogue.round3Question1Response1
-                            button2 = dialogue.round3Question1Response2
-                            button3 = dialogue.round3Question1Response3
-                        case 2:
-                            lastAnswer = 4
-                            question = dialogue.round3Question4
-                            button1 = dialogue.round3Question4Response10
-                            button2 = dialogue.round3Question4Response11
-                            button3 = dialogue.round3Question4Response12
-                        case 3:
-                            lastAnswer = 7
-                            question = dialogue.round3Question7
-                            button1 = dialogue.round3Question7Response19
-                            button2 = dialogue.round3Question7Response20
-                            button3 = dialogue.round3Question7Response21
-                        default:
-                            break
-                        }
-                    case 4:
-                        shouldHide = true
-                        switch lastAnswer {
-                        case 1:
-                            question = dialogue.round4Question1
-                        case 2:
-                            question = dialogue.round4Question4
-                        case 3:
-                            question = dialogue.round4Question7
-                        case 4:
-                            question = dialogue.round4Question10
-                        case 5:
-                            question = dialogue.round4Question13
-                        case 6:
-                            question = dialogue.round4Question16
-                        case 7:
-                            question = dialogue.round4Question19
-                        case 8:
-                            question = dialogue.round4Question22
-                        case 9:
-                            question = dialogue.round4Question25
-                        default:
-                            break
-                        }
+                        lastAnswer = 7
+                        question = dialogue.round3Question7
+                        button1 = dialogue.round3Question7Response19
+                        button2 = dialogue.round3Question7Response20
+                        button3 = dialogue.round3Question7Response21
                     default:
                         break
                     }
-                }, label: {
-                    Text(button1)
-                })
-                
-                //button 2
-                Button(action: {
-                    round += 1
-                    print("It's round \(round)")
-                    
-                    switch round {
+                case 4:
+                    shouldHide = true
+                    switch lastAnswer {
+                    case 1:
+                        question = dialogue.round4Question1
                     case 2:
+                        question = dialogue.round4Question4
+                    case 3:
+                        question = dialogue.round4Question7
+                    case 4:
+                        question = dialogue.round4Question10
+                    case 5:
+                        question = dialogue.round4Question13
+                    case 6:
+                        question = dialogue.round4Question16
+                    case 7:
+                        question = dialogue.round4Question19
+                    case 8:
+                        question = dialogue.round4Question22
+                    case 9:
+                        question = dialogue.round4Question25
+                    default:
+                        break
+                    }
+                default:
+                    break
+                }
+            }, label: {
+                Text(button1)
+            })
+            
+            //button 2
+            Button(action: {
+                round += 1
+                print("It's round \(round)")
+                
+                switch round {
+                case 2:
+                    lastAnswer = 2
+                    question = dialogue.round2Question2
+                    button1 = dialogue.round2Question2Response4
+                    button2 = dialogue.round2Question2Response5
+                    button3 = dialogue.round2Question2Response6
+                case 3:
+                    switch lastAnswer {
+                    case 1:
                         lastAnswer = 2
-                        question = dialogue.round2Question2
-                        button1 = dialogue.round2Question2Response4
-                        button2 = dialogue.round2Question2Response5
-                        button3 = dialogue.round2Question2Response6
-                    case 3:
-                        switch lastAnswer {
-                        case 1:
-                            lastAnswer = 2
-                            question = dialogue.round3Question2
-                            button1 = dialogue.round3Question2Response4
-                            button2 = dialogue.round3Question2Response5
-                            button3 = dialogue.round3Question2Response6
-                        case 2:
-                            lastAnswer = 5
-                            question = dialogue.round3Question5
-                            button1 = dialogue.round3Question5Response13
-                            button2 = dialogue.round3Question5Response14
-                            button3 = dialogue.round3Question5Response15
-                        case 3:
-                            lastAnswer = 8
-                            question = dialogue.round3Question8
-                            button1 = dialogue.round3Question8Response22
-                            button2 = dialogue.round3Question8Response23
-                            button3 = dialogue.round3Question8Response24
-                        default:
-                            break
-                        }
-                    case 4:
-                        shouldHide = true
-                        switch lastAnswer {
-                        case 1:
-                            question = dialogue.round4Question2
-                        case 2:
-                            question = dialogue.round4Question5
-                        case 3:
-                            question = dialogue.round4Question8
-                        case 4:
-                            question = dialogue.round4Question11
-                        case 5:
-                            question = dialogue.round4Question14
-                        case 6:
-                            question = dialogue.round4Question17
-                        case 7:
-                            question = dialogue.round4Question20
-                        case 8:
-                            question = dialogue.round4Question23
-                        case 9:
-                            question = dialogue.round4Question26
-                        default:
-                            break
-                        }
-                    default:
-                        break
-                    }
-                }, label: {
-                    Text(button2)
-                })
-                
-                //button 3
-                Button(action: {
-                    round += 1
-                    switch round {
+                        question = dialogue.round3Question2
+                        button1 = dialogue.round3Question2Response4
+                        button2 = dialogue.round3Question2Response5
+                        button3 = dialogue.round3Question2Response6
                     case 2:
-                        lastAnswer = 3
-                        question = dialogue.round2Question3
-                        button1 = dialogue.round2Question3Response7
-                        button2 = dialogue.round2Question3Response8
-                        button3 = dialogue.round2Question3Response9
+                        lastAnswer = 5
+                        question = dialogue.round3Question5
+                        button1 = dialogue.round3Question5Response13
+                        button2 = dialogue.round3Question5Response14
+                        button3 = dialogue.round3Question5Response15
                     case 3:
-                        switch lastAnswer {
-                        case 1:
-                            lastAnswer = 3
-                            question = dialogue.round3Question3
-                            button1 = dialogue.round3Question3Response7
-                            button2 = dialogue.round3Question3Response8
-                            button3 = dialogue.round3Question3Response9
-                        case 2:
-                            lastAnswer = 6
-                            question = dialogue.round3Question6
-                            button1 = dialogue.round3Question6Response16
-                            button2 = dialogue.round3Question6Response17
-                            button3 = dialogue.round3Question6Response18
-                        case 3:
-                            lastAnswer = 9
-                            question = dialogue.round3Question9
-                            button1 = dialogue.round3Question9Response25
-                            button2 = dialogue.round3Question9Response26
-                            button3 = dialogue.round3Question9Response27
-                        default:
-                            break
-                        }
-                    case 4:
-                        shouldHide = true
-                        switch lastAnswer {
-                        case 1:
-                            question = dialogue.round4Question3
-                        case 2:
-                            question = dialogue.round4Question6
-                        case 3:
-                            question = dialogue.round4Question9
-                        case 4:
-                            question = dialogue.round4Question12
-                        case 5:
-                            question = dialogue.round4Question15
-                        case 6:
-                            question = dialogue.round4Question18
-                        case 7:
-                            question = dialogue.round4Question21
-                        case 8:
-                            question = dialogue.round4Question24
-                        case 9:
-                            question = dialogue.round4Question27
-                        default:
-                            break
-                        }
+                        lastAnswer = 8
+                        question = dialogue.round3Question8
+                        button1 = dialogue.round3Question8Response22
+                        button2 = dialogue.round3Question8Response23
+                        button3 = dialogue.round3Question8Response24
                     default:
                         break
                     }
-                }, label: {
-                    Text(button3)
-                })
-            }
-            .opacity(shouldHide ? 0 : 1)
+                case 4:
+                    shouldHide = true
+                    switch lastAnswer {
+                    case 1:
+                        question = dialogue.round4Question2
+                    case 2:
+                        question = dialogue.round4Question5
+                    case 3:
+                        question = dialogue.round4Question8
+                    case 4:
+                        question = dialogue.round4Question11
+                    case 5:
+                        question = dialogue.round4Question14
+                    case 6:
+                        question = dialogue.round4Question17
+                    case 7:
+                        question = dialogue.round4Question20
+                    case 8:
+                        question = dialogue.round4Question23
+                    case 9:
+                        question = dialogue.round4Question26
+                    default:
+                        break
+                    }
+                default:
+                    break
+                }
+            }, label: {
+                Text(button2)
+            })
+            
+            //button 3
+            Button(action: {
+                round += 1
+                switch round {
+                case 2:
+                    lastAnswer = 3
+                    question = dialogue.round2Question3
+                    button1 = dialogue.round2Question3Response7
+                    button2 = dialogue.round2Question3Response8
+                    button3 = dialogue.round2Question3Response9
+                case 3:
+                    switch lastAnswer {
+                    case 1:
+                        lastAnswer = 3
+                        question = dialogue.round3Question3
+                        button1 = dialogue.round3Question3Response7
+                        button2 = dialogue.round3Question3Response8
+                        button3 = dialogue.round3Question3Response9
+                    case 2:
+                        lastAnswer = 6
+                        question = dialogue.round3Question6
+                        button1 = dialogue.round3Question6Response16
+                        button2 = dialogue.round3Question6Response17
+                        button3 = dialogue.round3Question6Response18
+                    case 3:
+                        lastAnswer = 9
+                        question = dialogue.round3Question9
+                        button1 = dialogue.round3Question9Response25
+                        button2 = dialogue.round3Question9Response26
+                        button3 = dialogue.round3Question9Response27
+                    default:
+                        break
+                    }
+                case 4:
+                    shouldHide = true
+                    switch lastAnswer {
+                    case 1:
+                        question = dialogue.round4Question3
+                    case 2:
+                        question = dialogue.round4Question6
+                    case 3:
+                        question = dialogue.round4Question9
+                    case 4:
+                        question = dialogue.round4Question12
+                    case 5:
+                        question = dialogue.round4Question15
+                    case 6:
+                        question = dialogue.round4Question18
+                    case 7:
+                        question = dialogue.round4Question21
+                    case 8:
+                        question = dialogue.round4Question24
+                    case 9:
+                        question = dialogue.round4Question27
+                    default:
+                        break
+                    }
+                default:
+                    break
+                }
+            }, label: {
+                Text(button3)
+            })
+            
+            
         }
         .font(.title2)
         .padding()
         .buttonStyle(.borderedProminent)
         .tint(.indigo)
         .onAppear() {
-            question = dialogue.round1Question1
-            button1 = dialogue.round1Question1Response1
-            button2 = dialogue.round1Question1Response2
-            button3 = dialogue.round1Question1Response3
+            setInitialState()
+            
         }
+        
         HStack {
             Spacer()
             Button(action: {
@@ -370,28 +375,37 @@ struct ResponseView: View {
         .tint(.indigo)
         .buttonStyle(.borderedProminent)
         
-        //        Button(action: {
-        //            dismissWindow(id: "ResponseView")
-        //            openWindow(id: "HomeView")
-        //            Task
-        //            {
-        //                await dismissImmersiveSpace()
-        //            }
-        //        }) {
-        //            Text("Dismiss Windows")
-        //                .font(.headline)
-        //                .padding()
-        //                .background(Color.blue)
-        //                .foregroundColor(.white)
-        //                .cornerRadius(10)
-        //        }
-        .buttonStyle(.plain)
-        .onLoad {
-            dismissWindow(id: "HomeView")
-        }
     }
-}
+        
+        private func setInitialState() {
+               // Set the initial question and speak it
+               question = dialogue.round1Question1
+               button1 = dialogue.round1Question1Response1
+               button2 = dialogue.round1Question1Response2
+               button3 = dialogue.round1Question1Response3
+               SpeechSynthesizerService.shared.speak(question)
+           }
+        
+        
+    private func updateState(from button: String) {
+           // Logic to determine the next question based on button press
+           // Dummy logic here: increment the round and update the question randomly
+           round += 1
+           // You would update 'question' and 'button1', 'button2', 'button3' here based on your game logic
+           SpeechSynthesizerService.shared.speak(question)
+       }
 
-#Preview {
-    ResponseView()
-}
+       private func resetState() {
+           round = 1
+           lastAnswer = 0
+           shouldHide = false
+           setInitialState()
+       }
+   }
+
+   // Preview for your SwiftUI view
+   struct ResponseView_Previews: PreviewProvider {
+       static var previews: some View {
+           ResponseView()
+       }
+   }
