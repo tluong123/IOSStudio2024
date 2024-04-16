@@ -27,6 +27,7 @@ struct HomeView: View {
                         Task
                         {
                             await openImmersiveSpace(id:"ImmersiveView")
+                            dismissWindow(id: "HomeView")
                         }
                     }, label: {
                         Text("Ordering a Coffee")
@@ -58,6 +59,9 @@ struct HomeView: View {
             //                }
             //            }
         }
+        .onLoad {
+                    dismissWindow(id: "ResponseView")
+                }
         .padding()
     }
 }

@@ -18,99 +18,99 @@ struct ResponseView: View {
     @State var shouldHide = false
     
     let dialogue = Dialogue(
-        round1Question1: "What topic do you want to talk about?",
+        round1Question1: "Hi, what can I get you?",
         
-        round1Question1Response1: "Music",
-        round1Question1Response2: "Sport",
-        round1Question1Response3: "Exercise",
+        round1Question1Response1: "Do you have any specials?",
+        round1Question1Response2: "Just a sec.",
+        round1Question1Response3: "What coffees do you have?",
         
-        round2Question1: "Let's talk about music. What's your favourite genre?",
-        round2Question1Response1: "Metal",
-        round2Question1Response2: "Rock",
-        round2Question1Response3: "Pop",
+        round2Question1: "Our soup of the day is minestr-oh-no.",
+        round2Question1Response1: "Oh, I'm actually looking for coffee!",
+        round2Question1Response2: "Oh, that's not what I want.",
+        round2Question1Response3: "I'll get that!",
         
-        round2Question2: "Let's talk about sport. Your favourite?",
-        round2Question2Response4: "NRL",
-        round2Question2Response5: "AFL",
-        round2Question2Response6: "F1",
+        round2Question2: "Hey! There are other customers waiting.",
+        round2Question2Response4: "I know. I'm sorry. What coffees do you have?",
+        round2Question2Response5: "Just give me a second.",
+        round2Question2Response6: "What's your problem?",
         
-        round2Question3: "Let's talk about exercise. Your favourite?",
-        round2Question3Response7: "Running",
-        round2Question3Response8: "Swimming",
-        round2Question3Response9: "Walking",
+        round2Question3: "We have the Brewster's Blend, the Java Jolt, the Roast Riddle, and the Morning Mist.",
+        round2Question3Response7: "What's a Java Jolt?",
+        round2Question3Response8: "What's a Roast Riddle?",
+        round2Question3Response9: "What's a Brewster's Blend?",
         
-        round3Question1: "Your favourite metal band?",
-        round3Question1Response1: "Opeth",
-        round3Question1Response2: "BTBAM",
-        round3Question1Response3: "Tool",
+        round3Question1: "No problem. Our coffees are $4 for a medium and $5 for large.",
+        round3Question1Response1: "A medium Brewster's Blend please.",
+        round3Question1Response2: "A large Java Jolt please.",
+        round3Question1Response3: "A large Roast Riddle please.",
         
-        round3Question2: "Your favourite rock band?",
-        round3Question2Response4: "KGATLW",
-        round3Question2Response5: "Radiohead",
-        round3Question2Response6: "GYBE",
+        round3Question2: "Did you want a coffee instead?",
+        round3Question2Response4: "Yes please. The largest latte I can get for $4.50, please.",
+        round3Question2Response5: "Yes! A large cappuccino please.",
+        round3Question2Response6: "No, don't worry about it.",
         
-        round3Question3: "Your favourite pop artist?",
-        round3Question3Response7: "Tay Tay",
-        round3Question3Response8: "Noah Kahan",
-        round3Question3Response9: "Harry Styles",
+        round3Question3: "Great. $8.80 please.",
+        round3Question3Response7: "Oh, sorry, I want coffee instead.",
+        round3Question3Response8: "Here you are.",
+        round3Question3Response9: "Actually, don't worry...",
         
-        round3Question4: "Favourite NRL team?",
-        round3Question4Response10: "Parra",
-        round3Question4Response11: "Easts",
-        round3Question4Response12: "Souths",
+        round3Question4: "We have the Brewster's Blend, the Java Jolt, the Roast Riddle, and the Morning Mist.",
+        round3Question4Response10: "A medium Brewster's Blend please.",
+        round3Question4Response11: "A large Java Jolt please.",
+        round3Question4Response12: "A large Roast Riddle please.",
         
-        round3Question5: "Favourite AFL team?",
-        round3Question5Response13: "Sydney",
-        round3Question5Response14: "Pies",
-        round3Question5Response15: "GWS",
+        round3Question5: "Be quick!",
+        round3Question5Response13: "A medium Brewster's Blend please.",
+        round3Question5Response14: "A large Java Jolt please.",
+        round3Question5Response15: "A large Roast Riddle please.",
         
-        round3Question6: "Favourite F1 driver?",
-        round3Question6Response16: "Piastri",
-        round3Question6Response17: "Ricciardo",
-        round3Question6Response18: "Sainz",
+        round3Question6: "Our version of a latte!",
+        round3Question6Response16: "I'll have that in a medium, please.",
+        round3Question6Response17: "I'll grab a large Brewster's Blend.",
+        round3Question6Response18: "Can I have a large Roast Riddle please?",
         
-        round3Question7: "Where do you run?",
-        round3Question7Response19: "Running track",
-        round3Question7Response20: "Treadmill",
-        round3Question7Response21: "Countryside",
+        round3Question7: "A cappuccino.",
+        round3Question7Response19: "A large Java Jolt please!",
+        round3Question7Response20: "A medium Java Jolt please!",
+        round3Question7Response21: "Can I please have the latte?",
         
-        round3Question8: "Where do you swim?",
-        round3Question8Response22: "Beach",
-        round3Question8Response23: "Pool",
-        round3Question8Response24: "Ocean bath",
+        round3Question8: "Our special take on a flat white.",
+        round3Question8Response22: "A medium Roast Riddle please.",
+        round3Question8Response23: "A large Roast Riddle please.",
+        round3Question8Response24: "I'd like the latte.",
         
-        round3Question9: "Where do you walk?",
-        round3Question9Response25: "Neighbourhood",
-        round3Question9Response26: "Park",
-        round3Question9Response27: "Backyard",
+        round3Question9: "Our version of a latte!",
+        round3Question9Response25: "I'll have that in a medium, please.",
+        round3Question9Response26: "I'll grab a large Brewster's Blend.",
+        round3Question9Response27: "Can I have a large Roast Riddle please?",
         
-        round4Question1: "Blackwater Park is awesome",
-        round4Question2: "Colors is great",
-        round4Question3: "Lateralus is superb",
-        round4Question4: "PDA slaps",
-        round4Question5: "I love In Rainbows",
-        round4Question6: "I love F#",
-        round4Question7: "Eras!",
-        round4Question8: "Sticks",
-        round4Question9: "Sushi",
-        round4Question10: "Parra Power",
-        round4Question11: "Easts to Win",
-        round4Question12: "No teeth",
-        round4Question13: "Up the bloods",
-        round4Question14: "Flagpies",
-        round4Question15: "Orange team",
-        round4Question16: "Aussie Aussie Aussie",
-        round4Question17: "Used to be good",
-        round4Question18: "No seat for him yet",
-        round4Question19: "What an athlete",
-        round4Question20: "Boring",
-        round4Question21: "Scenic",
-        round4Question22: "Watch out for sharks",
-        round4Question23: "Fancy",
-        round4Question24: "Gross",
-        round4Question25: "Me too",
-        round4Question26: "Watch out for leaves",
-        round4Question27: "How??")
+        round4Question1: "Coming right up. $4 please.",
+        round4Question2: "Coming right up. $5 please.",
+        round4Question3: "Coming right up. $5 please.",
+        round4Question4: "Great! That's a Brewster's Blend in a medium. $4 please.",
+        round4Question5: "Coming right up. $5 please.",
+        round4Question6: "No problem. Have a nice day.",
+        round4Question7: "No problem. What coffee can I get you?",
+        round4Question8: "Thanks! It'll be out soon.",
+        round4Question9: "No problem. Have a nice day.",
+        round4Question10: "Coming right up. $5 please.",
+        round4Question11: "Coming right up. $5 please.",
+        round4Question12: "Coming right up. $5 please.",
+        round4Question13: "Coming right up. $4 please.",
+        round4Question14: "Coming right up. $5 please.",
+        round4Question15: "Coming right up. $5 please.",
+        round4Question16: "That's $4.",
+        round4Question17: "That's $5.",
+        round4Question18: "Get out of my cafe!",
+        round4Question19: "Coming right up. $5 please.",
+        round4Question20: "Coming right up. $4 please.",
+        round4Question21: "Coming right up. $4 please.",
+        round4Question22: "Coming right up. $4 please.",
+        round4Question23: "Coming right up. $5 please.",
+        round4Question24: "Coming right up. $4 please.",
+        round4Question25: "Sure. $5 please.",
+        round4Question26: "Coming right up. $5 please.",
+        round4Question27: "Coming right up. $5 please.")
     
     var body: some View {
         VStack {
@@ -120,214 +120,211 @@ struct ResponseView: View {
                 .onChange(of: question) { newQuestion in
                     SpeechSynthesizerService.shared.speak(newQuestion)
                 }
-            
-            
-            
-            //button 1
-            Button(action: {
-                round += 1
-                print("It's round \(round)")
-                
-                switch round {
-                case 2:
-                    lastAnswer = 1
-                    question = dialogue.round2Question1
-                    button1 = dialogue.round2Question1Response1
-                    button2 = dialogue.round2Question1Response2
-                    button3 = dialogue.round2Question1Response3
-                case 3:
-                    switch lastAnswer {
-                    case 1:
+            VStack {
+                //button 1
+                Button(action: {
+                    round += 1
+                    print("It's round \(round)")
+                    
+                    switch round {
+                    case 2:
                         lastAnswer = 1
-                        question = dialogue.round3Question1
-                        button1 = dialogue.round3Question1Response1
-                        button2 = dialogue.round3Question1Response2
-                        button3 = dialogue.round3Question1Response3
-                    case 2:
-                        lastAnswer = 4
-                        question = dialogue.round3Question4
-                        button1 = dialogue.round3Question4Response10
-                        button2 = dialogue.round3Question4Response11
-                        button3 = dialogue.round3Question4Response12
+                        question = dialogue.round2Question1
+                        button1 = dialogue.round2Question1Response1
+                        button2 = dialogue.round2Question1Response2
+                        button3 = dialogue.round2Question1Response3
                     case 3:
-                        lastAnswer = 7
-                        question = dialogue.round3Question7
-                        button1 = dialogue.round3Question7Response19
-                        button2 = dialogue.round3Question7Response20
-                        button3 = dialogue.round3Question7Response21
-                    default:
-                        break
-                    }
-                case 4:
-                    shouldHide = true
-                    switch lastAnswer {
-                    case 1:
-                        question = dialogue.round4Question1
-                    case 2:
-                        question = dialogue.round4Question4
-                    case 3:
-                        question = dialogue.round4Question7
+                        switch lastAnswer {
+                        case 1:
+                            lastAnswer = 1
+                            question = dialogue.round3Question1
+                            button1 = dialogue.round3Question1Response1
+                            button2 = dialogue.round3Question1Response2
+                            button3 = dialogue.round3Question1Response3
+                        case 2:
+                            lastAnswer = 4
+                            question = dialogue.round3Question4
+                            button1 = dialogue.round3Question4Response10
+                            button2 = dialogue.round3Question4Response11
+                            button3 = dialogue.round3Question4Response12
+                        case 3:
+                            lastAnswer = 7
+                            question = dialogue.round3Question7
+                            button1 = dialogue.round3Question7Response19
+                            button2 = dialogue.round3Question7Response20
+                            button3 = dialogue.round3Question7Response21
+                        default:
+                            break
+                        }
                     case 4:
-                        question = dialogue.round4Question10
-                    case 5:
-                        question = dialogue.round4Question13
-                    case 6:
-                        question = dialogue.round4Question16
-                    case 7:
-                        question = dialogue.round4Question19
-                    case 8:
-                        question = dialogue.round4Question22
-                    case 9:
-                        question = dialogue.round4Question25
+                        shouldHide = true
+                        switch lastAnswer {
+                        case 1:
+                            question = dialogue.round4Question1
+                        case 2:
+                            question = dialogue.round4Question4
+                        case 3:
+                            question = dialogue.round4Question7
+                        case 4:
+                            question = dialogue.round4Question10
+                        case 5:
+                            question = dialogue.round4Question13
+                        case 6:
+                            question = dialogue.round4Question16
+                        case 7:
+                            question = dialogue.round4Question19
+                        case 8:
+                            question = dialogue.round4Question22
+                        case 9:
+                            question = dialogue.round4Question25
+                        default:
+                            break
+                        }
                     default:
                         break
                     }
-                default:
-                    break
-                }
-            }, label: {
-                Text(button1)
-            })
-            
-            //button 2
-            Button(action: {
-                round += 1
-                print("It's round \(round)")
+                }, label: {
+                    Text(button1)
+                })
                 
-                switch round {
-                case 2:
-                    lastAnswer = 2
-                    question = dialogue.round2Question2
-                    button1 = dialogue.round2Question2Response4
-                    button2 = dialogue.round2Question2Response5
-                    button3 = dialogue.round2Question2Response6
-                case 3:
-                    switch lastAnswer {
-                    case 1:
+                //button 2
+                Button(action: {
+                    round += 1
+                    print("It's round \(round)")
+                    
+                    switch round {
+                    case 2:
                         lastAnswer = 2
-                        question = dialogue.round3Question2
-                        button1 = dialogue.round3Question2Response4
-                        button2 = dialogue.round3Question2Response5
-                        button3 = dialogue.round3Question2Response6
-                    case 2:
-                        lastAnswer = 5
-                        question = dialogue.round3Question5
-                        button1 = dialogue.round3Question5Response13
-                        button2 = dialogue.round3Question5Response14
-                        button3 = dialogue.round3Question5Response15
+                        question = dialogue.round2Question2
+                        button1 = dialogue.round2Question2Response4
+                        button2 = dialogue.round2Question2Response5
+                        button3 = dialogue.round2Question2Response6
                     case 3:
-                        lastAnswer = 8
-                        question = dialogue.round3Question8
-                        button1 = dialogue.round3Question8Response22
-                        button2 = dialogue.round3Question8Response23
-                        button3 = dialogue.round3Question8Response24
-                    default:
-                        break
-                    }
-                case 4:
-                    shouldHide = true
-                    switch lastAnswer {
-                    case 1:
-                        question = dialogue.round4Question2
-                    case 2:
-                        question = dialogue.round4Question5
-                    case 3:
-                        question = dialogue.round4Question8
+                        switch lastAnswer {
+                        case 1:
+                            lastAnswer = 2
+                            question = dialogue.round3Question2
+                            button1 = dialogue.round3Question2Response4
+                            button2 = dialogue.round3Question2Response5
+                            button3 = dialogue.round3Question2Response6
+                        case 2:
+                            lastAnswer = 5
+                            question = dialogue.round3Question5
+                            button1 = dialogue.round3Question5Response13
+                            button2 = dialogue.round3Question5Response14
+                            button3 = dialogue.round3Question5Response15
+                        case 3:
+                            lastAnswer = 8
+                            question = dialogue.round3Question8
+                            button1 = dialogue.round3Question8Response22
+                            button2 = dialogue.round3Question8Response23
+                            button3 = dialogue.round3Question8Response24
+                        default:
+                            break
+                        }
                     case 4:
-                        question = dialogue.round4Question11
-                    case 5:
-                        question = dialogue.round4Question14
-                    case 6:
-                        question = dialogue.round4Question17
-                    case 7:
-                        question = dialogue.round4Question20
-                    case 8:
-                        question = dialogue.round4Question23
-                    case 9:
-                        question = dialogue.round4Question26
+                        shouldHide = true
+                        switch lastAnswer {
+                        case 1:
+                            question = dialogue.round4Question2
+                        case 2:
+                            question = dialogue.round4Question5
+                        case 3:
+                            question = dialogue.round4Question8
+                        case 4:
+                            question = dialogue.round4Question11
+                        case 5:
+                            question = dialogue.round4Question14
+                        case 6:
+                            question = dialogue.round4Question17
+                        case 7:
+                            question = dialogue.round4Question20
+                        case 8:
+                            question = dialogue.round4Question23
+                        case 9:
+                            question = dialogue.round4Question26
+                        default:
+                            break
+                        }
                     default:
                         break
                     }
-                default:
-                    break
-                }
-            }, label: {
-                Text(button2)
-            })
-            
-            //button 3
-            Button(action: {
-                round += 1
-                switch round {
-                case 2:
-                    lastAnswer = 3
-                    question = dialogue.round2Question3
-                    button1 = dialogue.round2Question3Response7
-                    button2 = dialogue.round2Question3Response8
-                    button3 = dialogue.round2Question3Response9
-                case 3:
-                    switch lastAnswer {
-                    case 1:
+                }, label: {
+                    Text(button2)
+                })
+                
+                //button 3
+                Button(action: {
+                    round += 1
+                    switch round {
+                    case 2:
                         lastAnswer = 3
-                        question = dialogue.round3Question3
-                        button1 = dialogue.round3Question3Response7
-                        button2 = dialogue.round3Question3Response8
-                        button3 = dialogue.round3Question3Response9
-                    case 2:
-                        lastAnswer = 6
-                        question = dialogue.round3Question6
-                        button1 = dialogue.round3Question6Response16
-                        button2 = dialogue.round3Question6Response17
-                        button3 = dialogue.round3Question6Response18
+                        question = dialogue.round2Question3
+                        button1 = dialogue.round2Question3Response7
+                        button2 = dialogue.round2Question3Response8
+                        button3 = dialogue.round2Question3Response9
                     case 3:
-                        lastAnswer = 9
-                        question = dialogue.round3Question9
-                        button1 = dialogue.round3Question9Response25
-                        button2 = dialogue.round3Question9Response26
-                        button3 = dialogue.round3Question9Response27
-                    default:
-                        break
-                    }
-                case 4:
-                    shouldHide = true
-                    switch lastAnswer {
-                    case 1:
-                        question = dialogue.round4Question3
-                    case 2:
-                        question = dialogue.round4Question6
-                    case 3:
-                        question = dialogue.round4Question9
+                        switch lastAnswer {
+                        case 1:
+                            lastAnswer = 3
+                            question = dialogue.round3Question3
+                            button1 = dialogue.round3Question3Response7
+                            button2 = dialogue.round3Question3Response8
+                            button3 = dialogue.round3Question3Response9
+                        case 2:
+                            lastAnswer = 6
+                            question = dialogue.round3Question6
+                            button1 = dialogue.round3Question6Response16
+                            button2 = dialogue.round3Question6Response17
+                            button3 = dialogue.round3Question6Response18
+                        case 3:
+                            lastAnswer = 9
+                            question = dialogue.round3Question9
+                            button1 = dialogue.round3Question9Response25
+                            button2 = dialogue.round3Question9Response26
+                            button3 = dialogue.round3Question9Response27
+                        default:
+                            break
+                        }
                     case 4:
-                        question = dialogue.round4Question12
-                    case 5:
-                        question = dialogue.round4Question15
-                    case 6:
-                        question = dialogue.round4Question18
-                    case 7:
-                        question = dialogue.round4Question21
-                    case 8:
-                        question = dialogue.round4Question24
-                    case 9:
-                        question = dialogue.round4Question27
+                        shouldHide = true
+                        switch lastAnswer {
+                        case 1:
+                            question = dialogue.round4Question3
+                        case 2:
+                            question = dialogue.round4Question6
+                        case 3:
+                            question = dialogue.round4Question9
+                        case 4:
+                            question = dialogue.round4Question12
+                        case 5:
+                            question = dialogue.round4Question15
+                        case 6:
+                            question = dialogue.round4Question18
+                        case 7:
+                            question = dialogue.round4Question21
+                        case 8:
+                            question = dialogue.round4Question24
+                        case 9:
+                            question = dialogue.round4Question27
+                        default:
+                            break
+                        }
                     default:
                         break
                     }
-                default:
-                    break
-                }
-            }, label: {
-                Text(button3)
-            })
-            
-            
+                }, label: {
+                    Text(button3)
+                })
+            }
+            .opacity(shouldHide ? 0 : 1)
+            .buttonStyle(.borderedProminent)
         }
         .font(.title2)
         .padding()
-        .buttonStyle(.borderedProminent)
         .tint(.indigo)
         .onAppear() {
             setInitialState()
-            
         }
         
         HStack {
@@ -357,11 +354,11 @@ struct ResponseView: View {
             Spacer()
             
             Button(action: {
-                dismissWindow(id: "ResponseView")
-                openWindow(id: "HomeView")
                 Task
                 {
                     await dismissImmersiveSpace()
+                    openWindow(id: "HomeView")
+                    dismissWindow(id: "ResponseView")
                 }
             }, label: {
                 Image(systemName: "xmark.circle")
@@ -376,36 +373,36 @@ struct ResponseView: View {
         .buttonStyle(.borderedProminent)
         
     }
-        
-        private func setInitialState() {
-               // Set the initial question and speak it
-               question = dialogue.round1Question1
-               button1 = dialogue.round1Question1Response1
-               button2 = dialogue.round1Question1Response2
-               button3 = dialogue.round1Question1Response3
-               SpeechSynthesizerService.shared.speak(question)
-           }
-        
-        
+    
+    private func setInitialState() {
+        // Set the initial question and speak it
+        question = dialogue.round1Question1
+        button1 = dialogue.round1Question1Response1
+        button2 = dialogue.round1Question1Response2
+        button3 = dialogue.round1Question1Response3
+        SpeechSynthesizerService.shared.speak(question)
+    }
+    
+    
     private func updateState(from button: String) {
-           // Logic to determine the next question based on button press
-           // Dummy logic here: increment the round and update the question randomly
-           round += 1
-           // You would update 'question' and 'button1', 'button2', 'button3' here based on your game logic
-           SpeechSynthesizerService.shared.speak(question)
-       }
+        // Logic to determine the next question based on button press
+        // Dummy logic here: increment the round and update the question randomly
+        round += 1
+        // You would update 'question' and 'button1', 'button2', 'button3' here based on your game logic
+        SpeechSynthesizerService.shared.speak(question)
+    }
+    
+    private func resetState() {
+        round = 1
+        lastAnswer = 0
+        shouldHide = false
+        setInitialState()
+    }
+}
 
-       private func resetState() {
-           round = 1
-           lastAnswer = 0
-           shouldHide = false
-           setInitialState()
-       }
-   }
-
-   // Preview for your SwiftUI view
-   struct ResponseView_Previews: PreviewProvider {
-       static var previews: some View {
-           ResponseView()
-       }
-   }
+// Preview for your SwiftUI view
+struct ResponseView_Previews: PreviewProvider {
+    static var previews: some View {
+        ResponseView()
+    }
+}
