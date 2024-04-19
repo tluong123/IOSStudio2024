@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct IOSStudioApp: App {
-    @State var immersionMode: ImmersionStyle = .progressive
     
     var body: some Scene {
         WindowGroup (id: "HomeView"){
@@ -27,6 +26,5 @@ struct IOSStudioApp: App {
         {
             ImmersiveView()
         }
-        .immersionStyle(selection: $immersionMode, in: .progressive)
     }
 }
