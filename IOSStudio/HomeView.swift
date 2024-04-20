@@ -60,8 +60,10 @@ struct HomeView: View {
             //            }
         }
         .onLoad {
-                    dismissWindow(id: "ResponseView")
-                }
+            dismissWindow(id: "ResponseView")
+            dismissWindow(id: "FeedbackViewPass")
+            dismissWindow(id: "FeedbackViewFail")
+        }
         .padding()
     }
 }

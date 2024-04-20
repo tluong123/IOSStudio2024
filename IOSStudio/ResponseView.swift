@@ -3,7 +3,12 @@ import RealityKit
 import RealityKitContent
 import AVFoundation
 
+//class ScenarioResult: ObservableObject {
+//    @Published var result: String?
+//}
+
 struct ResponseView: View {
+    
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
@@ -15,7 +20,10 @@ struct ResponseView: View {
     @State private var round = 1
     @State private var lastAnswer = 0
     
-    @State var shouldHide = false
+    @State var result = "Fail"
+    
+    @State var shouldHideResponseButtons = false
+    @State var shouldHideProceedButton = true
     
     let dialogue = Dialogue(
         round1Question1: "Hi, what can I get you?",
@@ -64,10 +72,10 @@ struct ResponseView: View {
         round3Question5Response14: "A large Java Jolt please.",
         round3Question5Response15: "A large Roast Riddle please.",
         
-        round3Question6: "Our version of a latte!",
-        round3Question6Response16: "I'll have that in a medium, please.",
-        round3Question6Response17: "I'll grab a large Brewster's Blend.",
-        round3Question6Response18: "Can I have a large Roast Riddle please?",
+        round3Question6: "Excuse me?",
+        round3Question6Response16: "I'm really sorry. A medium Brewster's Blend please.",
+        round3Question6Response17: "Sorry. A large Java Jolt please.",
+        round3Question6Response18: "Stuff you, buddy!",
         
         round3Question7: "A cappuccino.",
         round3Question7Response19: "A large Java Jolt please!",
@@ -157,26 +165,36 @@ struct ResponseView: View {
                             break
                         }
                     case 4:
-                        shouldHide = true
+                        shouldHideResponseButtons = true
+                        shouldHideProceedButton = false
                         switch lastAnswer {
                         case 1:
                             question = dialogue.round4Question1
+                            result = "Pass"
                         case 2:
                             question = dialogue.round4Question4
+                            result = "Pass"
                         case 3:
                             question = dialogue.round4Question7
+                            result = "Pass"
                         case 4:
                             question = dialogue.round4Question10
+                            result = "Fail"
                         case 5:
                             question = dialogue.round4Question13
+                            result = "Pass"
                         case 6:
                             question = dialogue.round4Question16
+                            result = "Pass"
                         case 7:
                             question = dialogue.round4Question19
+                            result = "Fail"
                         case 8:
                             question = dialogue.round4Question22
+                            result = "Fail"
                         case 9:
                             question = dialogue.round4Question25
+                            result = "Fail"
                         default:
                             break
                         }
@@ -223,26 +241,36 @@ struct ResponseView: View {
                             break
                         }
                     case 4:
-                        shouldHide = true
+                        shouldHideResponseButtons = true
+                        shouldHideProceedButton = false
                         switch lastAnswer {
                         case 1:
                             question = dialogue.round4Question2
+                            result = "Fail"
                         case 2:
                             question = dialogue.round4Question5
+                            result = "Fail"
                         case 3:
                             question = dialogue.round4Question8
+                            result = "Fail"
                         case 4:
                             question = dialogue.round4Question11
+                            result = "Fail"
                         case 5:
                             question = dialogue.round4Question14
+                            result = "Fail"
                         case 6:
                             question = dialogue.round4Question17
+                            result = "Fail"
                         case 7:
                             question = dialogue.round4Question20
+                            result = "Fail"
                         case 8:
                             question = dialogue.round4Question23
+                            result = "Fail"
                         case 9:
                             question = dialogue.round4Question26
+                            result = "Fail"
                         default:
                             break
                         }
@@ -287,26 +315,36 @@ struct ResponseView: View {
                             break
                         }
                     case 4:
-                        shouldHide = true
+                        shouldHideResponseButtons = true
+                        shouldHideProceedButton = false
                         switch lastAnswer {
                         case 1:
                             question = dialogue.round4Question3
+                            result = "Fail"
                         case 2:
                             question = dialogue.round4Question6
+                            result = "Fail"
                         case 3:
                             question = dialogue.round4Question9
+                            result = "Fail"
                         case 4:
                             question = dialogue.round4Question12
+                            result = "Fail"
                         case 5:
                             question = dialogue.round4Question15
+                            result = "Fail"
                         case 6:
                             question = dialogue.round4Question18
+                            result = "Fail"
                         case 7:
                             question = dialogue.round4Question21
+                            result = "Pass"
                         case 8:
                             question = dialogue.round4Question24
+                            result = "Pass"
                         case 9:
                             question = dialogue.round4Question27
+                            result = "Fail"
                         default:
                             break
                         }
@@ -317,7 +355,7 @@ struct ResponseView: View {
                     Text(button3)
                 })
             }
-            .opacity(shouldHide ? 0 : 1)
+            .opacity(shouldHideResponseButtons ? 0 : 1)
             .buttonStyle(.borderedProminent)
         }
         .font(.title2)
@@ -328,29 +366,6 @@ struct ResponseView: View {
         }
         
         HStack {
-            Spacer()
-            Button(action: {
-                round = 1
-                lastAnswer = 0
-                shouldHide = false
-                question = dialogue.round1Question1
-                button1 = dialogue.round1Question1Response1
-                button2 = dialogue.round1Question1Response2
-                button3 = dialogue.round1Question1Response3
-            }, label: {
-                Image(systemName: "gobackward")
-                    .frame(width: 30, height: 30)
-            })
-            
-            Spacer()
-            
-            Text("10")
-                .padding()
-                .background(.indigo)
-                .foregroundStyle(.white)
-                .font(.title2)
-                .cornerRadius(1000)
-            
             Spacer()
             
             Button(action: {
@@ -364,6 +379,38 @@ struct ResponseView: View {
                 Image(systemName: "xmark.circle")
                     .frame(width: 30, height: 30)
             })
+            .opacity(shouldHideProceedButton ? 1 : 0)
+            
+            Spacer()
+            
+            Text("10")
+                .padding()
+                .background(.indigo)
+                .foregroundStyle(.white)
+                .font(.title2)
+                .cornerRadius(1000)
+            
+            Spacer()
+            
+            Button(action: {
+//                round = 1
+//                lastAnswer = 0
+//                shouldHideResponseButtons = false
+//                question = dialogue.round1Question1
+//                button1 = dialogue.round1Question1Response1
+//                button2 = dialogue.round1Question1Response2
+//                button3 = dialogue.round1Question1Response3
+                if (result == "Fail") {
+                    openWindow(id: "FeedbackViewFail")
+                } else {
+                    openWindow(id: "FeedbackViewPass")
+                }
+                dismissWindow(id: "ResponseView")
+            }, label: {
+                Image(systemName: "arrowshape.right.circle")
+                    .frame(width: 30, height: 30)
+            })
+            .opacity(shouldHideProceedButton ? 0 : 1)
             
             Spacer()
             
@@ -371,7 +418,6 @@ struct ResponseView: View {
         .font(.title)
         .tint(.indigo)
         .buttonStyle(.borderedProminent)
-        
     }
     
     private func setInitialState() {
@@ -395,7 +441,7 @@ struct ResponseView: View {
     private func resetState() {
         round = 1
         lastAnswer = 0
-        shouldHide = false
+        shouldHideResponseButtons = false
         setInitialState()
     }
 }

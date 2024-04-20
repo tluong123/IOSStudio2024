@@ -21,6 +21,16 @@ struct IOSStudioApp: App {
         }
         .defaultSize(CGSize(width: 700, height: 400))
         
+        WindowGroup (id: "FeedbackViewPass") {
+            FeedbackView(result: "Pass")
+        }
+        .defaultSize(CGSize(width: 400, height: 400))
+        
+        WindowGroup (id: "FeedbackViewFail") {
+            FeedbackView(result: "Fail")
+        }
+        .defaultSize(CGSize(width: 400, height: 400))
+        
         
         ImmersiveSpace(id: "ImmersiveView")
         {
