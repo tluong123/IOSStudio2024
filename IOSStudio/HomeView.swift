@@ -33,6 +33,8 @@ struct HomeView: View {
                         Text("Ordering a Coffee")
                         Image(systemName: "cup.and.saucer.fill")
                     })
+                    Text("More scenarios coming soon!")
+                        .padding()
                 }
                 .padding()
                 .buttonStyle(.borderedProminent)

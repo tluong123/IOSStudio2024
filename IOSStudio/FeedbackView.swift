@@ -34,7 +34,9 @@ struct FeedbackView: View {
             })
             Button(action: {
                 openWindow(id: "ResponseView")
-                dismissWindow(id: "FeedbackView")
+                dismissWindow(id: "FeedbackViewPass")
+                dismissWindow(id: "FeedbackViewFail")
+
             }, label: {
                 Image(systemName: "gobackward")
                     .frame(width: 30, height: 30)
