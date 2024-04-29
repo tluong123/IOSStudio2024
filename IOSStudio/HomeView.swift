@@ -23,7 +23,7 @@ struct HomeView: View {
                         .font(.title2)
                     Button(action: {
                         //                        dismissWindow(id: "HomeView")
-                        openWindow(id: "ResponseView")
+                        openWindow(id: "CafeBriefView")
                         Task
                         {
                             await openImmersiveSpace(id:"ImmersiveView")
@@ -65,6 +65,7 @@ struct HomeView: View {
             dismissWindow(id: "ResponseView")
             dismissWindow(id: "FeedbackViewPass")
             dismissWindow(id: "FeedbackViewFail")
+            dismissWindow(id: "CafeBriefView")
         }
         .padding()
     }

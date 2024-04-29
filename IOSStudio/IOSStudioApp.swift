@@ -16,7 +16,12 @@ struct IOSStudioApp: App {
         }
         .defaultSize(CGSize(width: 400, height: 400))
         
-        WindowGroup (id: "ResponseView"){
+        WindowGroup(id: "CafeBriefView") {
+            BriefView(scenario: "Cafe")
+        }
+        .defaultSize(CGSize(width: 400, height: 400))
+        
+        WindowGroup (id: "ResponseView") {
             ResponseView()
         }
         .defaultSize(CGSize(width: 700, height: 400))
