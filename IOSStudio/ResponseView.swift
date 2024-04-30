@@ -16,7 +16,7 @@ struct ResponseView: View {
     @State private var button1 = "1"
     @State private var button2 = "2"
     @State private var button3 = "3"
-    @State private var question = ""
+    @State public var question = "Hi, what can I get you?"
     @State private var round = 1
     @State private var lastAnswer = 0
     
@@ -434,7 +434,7 @@ struct ResponseView: View {
     
     private func setInitialState() {
         // Set the initial question and speak it
-        question = dialogue.round1Question1
+//        question = dialogue.round1Question1
         button1 = dialogue.round1Question1Response1
         button2 = dialogue.round1Question1Response2
         button3 = dialogue.round1Question1Response3
