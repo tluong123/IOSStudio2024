@@ -78,5 +78,61 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
+
+    def "barista_thumbs_up" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista thumbs up.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-6.677275, 0, 0.8854089)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "barista_angry" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista angry.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-5.031258, 2.9802322e-7, 0.24593091)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "barista_disappointed" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista disappointed.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-5.911396, 0, 0.6851964)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "barista" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-7.298857, 0, 0.9829986)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 }
 
