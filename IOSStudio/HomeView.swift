@@ -63,8 +63,7 @@ struct HomeView: View {
         }
         .onLoad {
             dismissWindow(id: "ResponseView")
-            dismissWindow(id: "FeedbackViewPass")
-            dismissWindow(id: "FeedbackViewFail")
+            dismissWindow(id: "FeedbackView")
             dismissWindow(id: "CafeBriefView")
         }
         .padding()
