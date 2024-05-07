@@ -13,13 +13,19 @@ struct FeedbackView: View {
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     
-    @State var result: String
+    @State var feedbackText = "Fail"
+    
+    @EnvironmentObject var feedback: Feedback
     
     var body: some View {
-        Text(result)
+        Text(feedbackText)
             .font(.title)
+            .padding()
+        
+        Text(feedback.feedback)
             .multilineTextAlignment(.center)
             .padding()
+        
         HStack {
             Button(action: {
                 Task
@@ -34,13 +40,18 @@ struct FeedbackView: View {
             })
             Button(action: {
                 openWindow(id: "ResponseView")
-                dismissWindow(id: "FeedbackViewPass")
-                dismissWindow(id: "FeedbackViewFail")
+                dismissWindow(id: "FeedbackView")
+                dismissWindow(id: "FeedbackView")
 
             }, label: {
                 Image(systemName: "gobackward")
                     .frame(width: 30, height: 30)
             })
+        }
+        .onLoad() {
+            if feedback.passed {
+                feedbackText = "Pass"
+            }
         }
         .font(.title)
         .tint(.indigo)
@@ -49,5 +60,5 @@ struct FeedbackView: View {
 }
 
 #Preview {
-    FeedbackView(result: "Pass")
+    FeedbackView()
 }

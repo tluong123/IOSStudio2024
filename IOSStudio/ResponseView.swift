@@ -3,15 +3,13 @@ import RealityKit
 import RealityKitContent
 import AVFoundation
 
-//class ScenarioResult: ObservableObject {
-//    @Published var result: String?
-//}
-
 struct ResponseView: View {
     
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    
+    @EnvironmentObject var feedback: Feedback
     
     @State private var button1 = "1"
     @State private var button2 = "2"
@@ -22,8 +20,6 @@ struct ResponseView: View {
     
     @State private var questionTimeRemaining = 9
     let questionTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    @State var result = "Fail"
     
     @State var shouldHideResponseButtons = true
     @State var shouldHideProceedButton = true
@@ -105,7 +101,7 @@ struct ResponseView: View {
         round4Question7: "No problem. What coffee can I get you?",
         round4Question8: "Thanks! It'll be out soon.",
         round4Question9: "No problem. Have a nice day.",
-        round4Question10: "Coming right up. $5 please.",
+        round4Question10: "Coming right up. $4 please.",
         round4Question11: "Coming right up. $5 please.",
         round4Question12: "Coming right up. $5 please.",
         round4Question13: "Coming right up. $4 please.",
@@ -120,19 +116,20 @@ struct ResponseView: View {
         round4Question22: "Coming right up. $4 please.",
         round4Question23: "Coming right up. $5 please.",
         round4Question24: "Coming right up. $4 please.",
-        round4Question25: "Sure. $5 please.",
+        round4Question25: "Sure. $4 please.",
         round4Question26: "Coming right up. $5 please.",
         round4Question27: "Coming right up. $5 please.")
     
     var body: some View {
+        
         VStack {
             VStack {
                 Text(question)
-                    .padding()
-                    .multilineTextAlignment(.leading)
-                    .onChange(of: question) { newQuestion in
+                    .multilineTextAlignment(.center)
+                    .onChange(of: question) { _, newQuestion in
                         SpeechSynthesizerService.shared.speak(newQuestion)
                     }
+                Spacer()
                 VStack {
                     //button 1
                     Button(action: {
@@ -170,34 +167,45 @@ struct ResponseView: View {
                             }
                         case 4:
                             dialogueComplete()
+                            //                            feedback.feedback = "Button 1"
+                            print(feedback.feedback)
                             switch lastAnswer {
                             case 1:
                                 question = dialogue.round4Question1
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You were presented with the soup option but still kept the conversation centred on coffee. You successfully ordered a Medium Brewster's Blend."
                             case 2:
                                 question = dialogue.round4Question4
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You almost ordered the soup, but you came to your senses. Though you didn't specify the coffee by name, you got there in the end."
                             case 3:
                                 question = dialogue.round4Question7
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You were about to pay for the soup, but you remembered your task at the last minute. Try getting to the point next time."
                             case 4:
                                 question = dialogue.round4Question10
-                                result = "Fail"
+                                feedback.passed = true
+                                feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 5:
                                 question = dialogue.round4Question13
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 6:
                                 question = dialogue.round4Question16
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You almost antagonised the barista, but you ordered the right coffee."
                             case 7:
                                 question = dialogue.round4Question19
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Java Jolt even though the barista told you it was a cappuccino."
                             case 8:
                                 question = dialogue.round4Question22
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Roast Riddle even though the barista told you it was a flat white."
                             case 9:
                                 question = dialogue.round4Question25
-                                result = "Fail"
+                                feedback.passed = true
+                                feedback.feedback = "Great work! You ordered a latte on a $4.50 budget."
                             default:
                                 break
                             }
@@ -243,35 +251,45 @@ struct ResponseView: View {
                                 break
                             }
                         case 4:
+                            feedback.feedback = "Button 1"
                             dialogueComplete()
                             switch lastAnswer {
                             case 1:
                                 question = dialogue.round4Question2
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You were presented with the soup option but still kept the conversation centred on coffee. Unfortunately, you didn't order a latte under $4.50."
                             case 2:
                                 question = dialogue.round4Question5
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order soup - good work. However, you didn't order a latte under $4.50 either."
                             case 3:
                                 question = dialogue.round4Question8
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You ordered soup when you were supposed to order coffee."
                             case 4:
                                 question = dialogue.round4Question11
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You kept the barista waiting and ordered the wrong coffee."
                             case 5:
                                 question = dialogue.round4Question14
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You kept the barista waiting and ordered the wrong coffee."
                             case 6:
                                 question = dialogue.round4Question17
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You antagonised the barista, and you ordered the wrong coffee."
                             case 7:
                                 question = dialogue.round4Question20
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Java Jolt even though the barista told you it was a cappuccino."
                             case 8:
                                 question = dialogue.round4Question23
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Roast Riddle even though the barista told you it was a flat white."
                             case 9:
                                 question = dialogue.round4Question26
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Roast Riddle even though the barista told you what a latte was."
                             default:
                                 break
                             }
@@ -321,31 +339,40 @@ struct ResponseView: View {
                             switch lastAnswer {
                             case 1:
                                 question = dialogue.round4Question3
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You were presented with the soup option but still kept the conversation centred on coffee. Unfortunately, you didn't order a latte under $4.50."
                             case 2:
                                 question = dialogue.round4Question6
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order soup, but you didn't order coffee either."
                             case 3:
                                 question = dialogue.round4Question9
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order soup, but you didn't order coffee either."
                             case 4:
                                 question = dialogue.round4Question12
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You kept the barista waiting and ordered the wrong coffee."
                             case 5:
                                 question = dialogue.round4Question15
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You kept the barista waiting and ordered the wrong coffee."
                             case 6:
                                 question = dialogue.round4Question18
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You got kicked out of the cafe."
                             case 7:
                                 question = dialogue.round4Question21
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "Great work! You ordered a latte on a $4.50 budget."
                             case 8:
                                 question = dialogue.round4Question24
-                                result = "Pass"
+                                feedback.passed = true
+                                feedback.feedback = "You didn't order the latte by name, but you still ordered it on a $4.50 budget. Nice work."
                             case 9:
                                 question = dialogue.round4Question27
-                                result = "Fail"
+                                feedback.passed = false
+                                feedback.feedback = "You didn't order a latte on a $4.50 budget. You ordered a Roast Riddle even though the barista told you what a latte was."
                             default:
                                 break
                             }
@@ -366,9 +393,10 @@ struct ResponseView: View {
                 setInitialState()
             }
             
+//            Spacer()
+            
             HStack {
                 Spacer()
-                
                 Button(action: {
                     Task
                     {
@@ -391,15 +419,9 @@ struct ResponseView: View {
                     .font(.title2)
                     .cornerRadius(1000)
                     .opacity(shouldHideResponseButtons ? 0 : 1)
-                
                 Spacer()
-                
                 Button(action: {
-                    if (result == "Fail") {
-                        openWindow(id: "FeedbackViewFail")
-                    } else {
-                        openWindow(id: "FeedbackViewPass")
-                    }
+                    openWindow(id: "FeedbackView")
                     dismissWindow(id: "ResponseView")
                 }, label: {
                     Image(systemName: "arrowshape.right.circle")
@@ -411,9 +433,9 @@ struct ResponseView: View {
             .font(.title)
             .tint(.indigo)
             .buttonStyle(.borderedProminent)
+            .padding()
             .onLoad {
-                dismissWindow(id: "FeedbackViewPass")
-                dismissWindow(id: "FeedbackViewFail")
+                dismissWindow(id: "FeedbackView")
             }
         }
         .onReceive(questionTimer) { time in
@@ -425,16 +447,19 @@ struct ResponseView: View {
                     shouldHideResponseButtons = false
                 }
                 if questionTimeRemaining == 0 {
-                    openWindow(id: "FeedbackViewFail")
+                    feedback.passed = false
+                    feedback.feedback = "You didn't answer quickly enough."
+                    openWindow(id: "FeedbackView")
                     dismissWindow(id: "ResponseView")
                 }
             }
         }
+        
     }
     
     private func setInitialState() {
         // Set the initial question and speak it
-//        question = dialogue.round1Question1
+        //        question = dialogue.round1Question1
         button1 = dialogue.round1Question1Response1
         button2 = dialogue.round1Question1Response2
         button3 = dialogue.round1Question1Response3
@@ -450,17 +475,10 @@ struct ResponseView: View {
         SpeechSynthesizerService.shared.speak(question)
     }
     
-    private func resetState() {
-        round = 1
-        lastAnswer = 0
-        shouldHideResponseButtons = false
-        setInitialState()
-    }
-    
     private func restartTimer() {
         shouldHideResponseButtons = true
         questionTimeRemaining = 9
-        let questionTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        _ = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     }
     
     private func dialogueComplete() {

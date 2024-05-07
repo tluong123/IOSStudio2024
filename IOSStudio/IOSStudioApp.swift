@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct IOSStudioApp: App {
+
+    var feedback = Feedback()
     
     var body: some Scene {
         WindowGroup (id: "HomeView"){
@@ -22,23 +24,16 @@ struct IOSStudioApp: App {
         .defaultSize(CGSize(width: 400, height: 400))
         
         WindowGroup (id: "ResponseView") {
-            ResponseView()
+            ResponseView().environmentObject(feedback)
         }
-        .defaultSize(CGSize(width: 700, height: 400))
+        .defaultSize(CGSize(width: 520, height: 400))
         
-        WindowGroup (id: "FeedbackViewPass") {
-            FeedbackView(result: "Pass")
-        }
-        .defaultSize(CGSize(width: 400, height: 400))
-        
-        WindowGroup (id: "FeedbackViewFail") {
-            FeedbackView(result: "Fail")
+        WindowGroup (id: "FeedbackView") {
+            FeedbackView().environmentObject(feedback)
         }
         .defaultSize(CGSize(width: 400, height: 400))
         
-        
-        ImmersiveSpace(id: "ImmersiveView")
-        {
+        ImmersiveSpace(id: "ImmersiveView") {
             ImmersiveView()
         }
     }
