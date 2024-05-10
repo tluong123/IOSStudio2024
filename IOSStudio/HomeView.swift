@@ -11,8 +11,6 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Model3D(named: "Immersive", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
             VStack {
                 Text("ConversaCoach")
                     .font(.largeTitle)

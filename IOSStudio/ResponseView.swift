@@ -4,7 +4,7 @@ import RealityKitContent
 import AVFoundation
 
 struct ResponseView: View {
-    
+    @Environment (ViewModel.self) var viewModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace

@@ -3,40 +3,63 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
+    @Environment (ViewModel.self) var viewModel
     // Entity to set an Anchor
-    @State var myEntity: Entity = {
-        let floorAnchor = AnchorEntity(.plane(.horizontal, classification: .floor, minimumBounds: SIMD2<Float>(0.6, 0.6)))
-        floorAnchor.position = [0, 0, 0 ]
-        return floorAnchor
+    @State public var waveAnimation: AnimationResource? = nil
+    @State public var baristaIdle: Entity? = nil
+
+    @State var cafeEntity: Entity = {
+        let floorAnchor = AnchorEntity(world: .zero)
+      return floorAnchor
     }()
     
     var body: some View {
         RealityView {content in
-            if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle)
-            {
+            do{
+                let scene = try await Entity(named: "Scene", in: realityKitContentBundle)
+                cafeEntity.addChild(scene)
+                    content.add(cafeEntity)
                 
-                myEntity.addChild(scene)
+                let characterAnimationsSceneEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
+                guard let waveModel = characterAnimationsSceneEntity.findEntity(named: "barista_waving") else { return }
+//                guard let angryModel = characterAnimationsSceneEntity.findEntity(named: "barista_angry") else { return }
+//                guard let idleModel = characterAnimationsSceneEntity.findEntity(named: "barista_idle") else { return }
+//               guard let happyModel = characterAnimationsSceneEntity.findEntity(named: "barista_thumbs_up") else { return }
+//               guard let pointModel = characterAnimationsSceneEntity.findEntity(named: "barista_point") else { return }
+//                guard let disappointModel = characterAnimationsSceneEntity.findEntity(named: "barista_disappoint") else { return }
                 
-                // Add main entity into scene
-                content.add(myEntity)
+                guard let baristaIdle = cafeEntity.findEntity(named: "barista_idle") else { return }
+                
+                
+                guard let idleAnimationResource = waveModel.availableAnimations.first else { return }
+                
+                guard let waveAnimationResource = waveModel.availableAnimations.first else { return }
+                let waveAnimation = try AnimationResource.sequence(with: [waveAnimationResource, idleAnimationResource.repeat()])
+                playWaveSequence(baristaIdle: baristaIdle, idleAnimationResource: idleAnimationResource)
+
+                
+                Task {
+                    self.baristaIdle = baristaIdle
+                    self.waveAnimation = waveAnimation
+                }
+            }  catch {
+                    print("Error in RealityView: \(error)")
             }
+
+
             
         }
-        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-            
-            // Search all animation in target entity and play animation
-            for anim in value.entity.availableAnimations {
-
-            print("Tapped \(String(describing: anim.name))")
-
-            value.entity.playAnimation(anim.repeat(duration: 2), transitionDuration: 1.25, startsPaused: false)
-
-            }
-
-            }))
     }
 }
-
+func playWaveSequence(baristaIdle: Entity?, idleAnimationResource: AnimationResource?) {
+    if let baristaIdle = baristaIdle, let idleAnimationResource = idleAnimationResource {
+        baristaIdle.playAnimation(idleAnimationResource.repeat())
+    }
+}
+func playDisappointAnim ()
+{
+    
+}
 #Preview {
     ImmersiveView()
 }

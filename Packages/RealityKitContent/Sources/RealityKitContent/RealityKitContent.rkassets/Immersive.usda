@@ -98,5 +98,278 @@ def Xform "Root"
             }
         }
     }
+
+    def "barista_angry" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista angry.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 8.014031e-7, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "Ch41_hair"
+            {
+                token outputs:surface.connect = </Root/barista_angry/_materials/Ch41_hair/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_angry/_materials/Ch41_hair/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_angry/_materials/Ch41_hair/Image_Texture_001.outputs:rgb>
+                    float inputs:opacity.connect = </Root/barista_angry/_materials/Ch41_hair/Image_Texture_002.outputs:a>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+            }
+
+            over "Ch41_body"
+            {
+                token outputs:surface.connect = </Root/barista_angry/_materials/Ch41_body/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_angry/_materials/Ch41_body/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_angry/_materials/Ch41_body/Image_Texture_001.outputs:rgb>
+                    float inputs:roughness.connect = </Root/barista_angry/_materials/Ch41_body/Image_Texture_003.outputs:r>
+                    float inputs:specular.connect = </Root/barista_angry/_materials/Ch41_body/Image_Texture_002.outputs:r>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_003"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_angry/_materials/Ch41_body/uvmap.outputs:result>
+                }
+            }
+        }
+    }
+
+    def "barista_disappointed" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista disappointed.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 5.0337985e-7, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "Ch41_hair"
+            {
+                token outputs:surface.connect = </Root/barista_disappointed/_materials/Ch41_hair/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_disappointed/_materials/Ch41_hair/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_disappointed/_materials/Ch41_hair/Image_Texture_001.outputs:rgb>
+                    float inputs:opacity.connect = </Root/barista_disappointed/_materials/Ch41_hair/Image_Texture_002.outputs:a>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+            }
+
+            over "Ch41_body"
+            {
+                token outputs:surface.connect = </Root/barista_disappointed/_materials/Ch41_body/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_disappointed/_materials/Ch41_body/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_disappointed/_materials/Ch41_body/Image_Texture_001.outputs:rgb>
+                    float inputs:roughness.connect = </Root/barista_disappointed/_materials/Ch41_body/Image_Texture_003.outputs:r>
+                    float inputs:specular.connect = </Root/barista_disappointed/_materials/Ch41_body/Image_Texture_002.outputs:r>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_003"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_disappointed/_materials/Ch41_body/uvmap.outputs:result>
+                }
+            }
+        }
+    }
+
+    def "barista_thumbs_up" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista thumbs up.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 5.0337985e-7, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_materials"
+        {
+            over "Ch41_body"
+            {
+                token outputs:surface.connect = </Root/barista_thumbs_up/_materials/Ch41_body/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_thumbs_up/_materials/Ch41_body/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_thumbs_up/_materials/Ch41_body/Image_Texture_001.outputs:rgb>
+                    float inputs:roughness.connect = </Root/barista_thumbs_up/_materials/Ch41_body/Image_Texture_003.outputs:r>
+                    float inputs:specular.connect = </Root/barista_thumbs_up/_materials/Ch41_body/Image_Texture_002.outputs:r>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_003"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_body/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_body/uvmap.outputs:result>
+                }
+            }
+
+            over "Ch41_hair"
+            {
+                token outputs:surface.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/Principled_BSDF.outputs:surface>
+
+                over "Principled_BSDF"
+                {
+                    color3f inputs:diffuseColor.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/Image_Texture.outputs:rgb>
+                    float3 inputs:normal.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/Image_Texture_001.outputs:rgb>
+                    float inputs:opacity.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/Image_Texture_002.outputs:a>
+                }
+
+                over "Image_Texture"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_002"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+
+                over "Image_Texture_001"
+                {
+                    float2 inputs:st.connect = </Root/barista_thumbs_up/_materials/Ch41_hair/uvmap.outputs:result>
+                }
+            }
+        }
+    }
+
+    def "barista_waving" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista waving.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "barista_point" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista point.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 2.3841858e-7, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "barista_idle" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.7123885, 0, 0)
+        }
+        prepend references = @barista idle.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 }
 
