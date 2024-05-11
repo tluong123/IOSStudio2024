@@ -1,31 +1,26 @@
-//
-//  IOSStudioApp.swift
-//  IOSStudio
-//
-//  Created by Thomas on 6/4/2024.
-//
-
 import SwiftUI
 
 @main
 struct IOSStudioApp: App {
     @State private var viewModel = ViewModel()
     var feedback = Feedback()
+    var scenarioOptions = ScenarioOptions()
     
     var body: some Scene {
         WindowGroup (id: "HomeView"){
-            HomeView()
+            HomeView().environmentObject(scenarioOptions)
         }
         .defaultSize(CGSize(width: 400, height: 400))
         
-        WindowGroup(id: "CafeBriefView") {
-            BriefView(scenario: "Cafe")
+        WindowGroup(id: "BriefView") {
+            BriefView().environmentObject(scenarioOptions)
         }
         .defaultSize(CGSize(width: 400, height: 400))
         
         WindowGroup (id: "ResponseView") {
             ResponseView().environmentObject(feedback)
                 .environment(viewModel)
+                .environmentObject(scenarioOptions)
         }
         .defaultSize(CGSize(width: 520, height: 400))
         

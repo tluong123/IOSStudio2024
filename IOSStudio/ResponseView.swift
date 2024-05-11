@@ -10,6 +10,7 @@ struct ResponseView: View {
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     
     @EnvironmentObject var feedback: Feedback
+    @EnvironmentObject var scenarioOptions: ScenarioOptions
     
     @State private var button1 = "1"
     @State private var button2 = "2"
@@ -25,106 +26,14 @@ struct ResponseView: View {
     @State var shouldHideProceedButton = true
     @State var roundInProgress = true
     
-    let dialogue = Dialogue(
-        round1Question1: "Hi, what can I get you?",
-        
-        round1Question1Response1: "Do you have any specials?",
-        round1Question1Response2: "Just a sec.",
-        round1Question1Response3: "What coffees do you have?",
-        
-        round2Question1: "Our soup of the day is minestr-oh-no.",
-        round2Question1Response1: "Oh, I'm actually looking for coffee!",
-        round2Question1Response2: "Oh, that's not what I want.",
-        round2Question1Response3: "I'll get that!",
-        
-        round2Question2: "Hey! There are other customers waiting.",
-        round2Question2Response4: "I know. I'm sorry. What coffees do you have?",
-        round2Question2Response5: "Just give me a second.",
-        round2Question2Response6: "What's your problem?",
-        
-        round2Question3: "We have the Brewster's Blend, the Java Jolt, the Roast Riddle, and the Morning Mist.",
-        round2Question3Response7: "What's a Java Jolt?",
-        round2Question3Response8: "What's a Roast Riddle?",
-        round2Question3Response9: "What's a Brewster's Blend?",
-        
-        round3Question1: "No problem. Our coffees are $4 for a medium and $5 for large.",
-        round3Question1Response1: "A medium Brewster's Blend please.",
-        round3Question1Response2: "A large Java Jolt please.",
-        round3Question1Response3: "A large Roast Riddle please.",
-        
-        round3Question2: "Did you want a coffee instead?",
-        round3Question2Response4: "Yes please. The largest latte I can get for $4.50, please.",
-        round3Question2Response5: "Yes! A large cappuccino please.",
-        round3Question2Response6: "No, don't worry about it.",
-        
-        round3Question3: "Great. $8.80 please.",
-        round3Question3Response7: "Oh, sorry, I want coffee instead.",
-        round3Question3Response8: "Here you are.",
-        round3Question3Response9: "Actually, don't worry...",
-        
-        round3Question4: "We have the Brewster's Blend, the Java Jolt, the Roast Riddle, and the Morning Mist.",
-        round3Question4Response10: "A medium Brewster's Blend please.",
-        round3Question4Response11: "A large Java Jolt please.",
-        round3Question4Response12: "A large Roast Riddle please.",
-        
-        round3Question5: "Be quick!",
-        round3Question5Response13: "A medium Brewster's Blend please.",
-        round3Question5Response14: "A large Java Jolt please.",
-        round3Question5Response15: "A large Roast Riddle please.",
-        
-        round3Question6: "Excuse me?",
-        round3Question6Response16: "I'm really sorry. A medium Brewster's Blend please.",
-        round3Question6Response17: "Sorry. A large Java Jolt please.",
-        round3Question6Response18: "Stuff you, buddy!",
-        
-        round3Question7: "A cappuccino.",
-        round3Question7Response19: "A large Java Jolt please!",
-        round3Question7Response20: "A medium Java Jolt please!",
-        round3Question7Response21: "Can I please have the latte?",
-        
-        round3Question8: "Our special take on a flat white.",
-        round3Question8Response22: "A medium Roast Riddle please.",
-        round3Question8Response23: "A large Roast Riddle please.",
-        round3Question8Response24: "I'd like the latte.",
-        
-        round3Question9: "Our version of a latte!",
-        round3Question9Response25: "I'll have that in a medium, please.",
-        round3Question9Response26: "I'll grab a large Brewster's Blend.",
-        round3Question9Response27: "Can I have a large Roast Riddle please?",
-        
-        round4Question1: "Coming right up. $4 please.",
-        round4Question2: "Coming right up. $5 please.",
-        round4Question3: "Coming right up. $5 please.",
-        round4Question4: "Great! That's a Brewster's Blend in a medium. $4 please.",
-        round4Question5: "Coming right up. $5 please.",
-        round4Question6: "No problem. Have a nice day.",
-        round4Question7: "No problem. What coffee can I get you?",
-        round4Question8: "Thanks! It'll be out soon.",
-        round4Question9: "No problem. Have a nice day.",
-        round4Question10: "Coming right up. $4 please.",
-        round4Question11: "Coming right up. $5 please.",
-        round4Question12: "Coming right up. $5 please.",
-        round4Question13: "Coming right up. $4 please.",
-        round4Question14: "Coming right up. $5 please.",
-        round4Question15: "Coming right up. $5 please.",
-        round4Question16: "That's $4.",
-        round4Question17: "That's $5.",
-        round4Question18: "Get out of my cafe!",
-        round4Question19: "Coming right up. $5 please.",
-        round4Question20: "Coming right up. $4 please.",
-        round4Question21: "Coming right up. $4 please.",
-        round4Question22: "Coming right up. $4 please.",
-        round4Question23: "Coming right up. $5 please.",
-        round4Question24: "Coming right up. $4 please.",
-        round4Question25: "Sure. $4 please.",
-        round4Question26: "Coming right up. $5 please.",
-        round4Question27: "Coming right up. $5 please.")
+    let dialogue = CafeDialogue()
     
     var body: some View {
         
         VStack {
             VStack {
                 Text(question)
+                    .opacity(scenarioOptions.captions ? 1 : 0)
                     .multilineTextAlignment(.center)
                     .onChange(of: question) { _, newQuestion in
                     }

@@ -4,10 +4,10 @@ import RealityKitContent
 
 struct HomeView: View {
     
-    @Environment(\.openImmersiveSpace) var openImmersiveSpace
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
+    
+    @EnvironmentObject var scenarioOptions: ScenarioOptions
     
     var body: some View {
         VStack {
@@ -17,54 +17,38 @@ struct HomeView: View {
                     .fontWeight(.black)
                     .foregroundStyle(.indigo)
                 VStack {
+                    
                     Text("Choose a scenario")
                         .font(.title2)
+                    
                     Button(action: {
-                        //                        dismissWindow(id: "HomeView")
-                        openWindow(id: "CafeBriefView")
-                        Task
-                        {
-                            await openImmersiveSpace(id:"ImmersiveView")
-                            dismissWindow(id: "HomeView")
-                        }
+                        scenarioOptions.scenario = "Cafe"
+                        openWindow(id: "BriefView")
+                        dismissWindow(id: "HomeView")
                     }, label: {
                         Text("Ordering a Coffee")
                         Image(systemName: "cup.and.saucer.fill")
                     })
+                    
                     Text("More scenarios coming soon!")
                         .padding()
                 }
                 .padding()
                 .buttonStyle(.borderedProminent)
                 .tint(.indigo)
-                Spacer()
-                ///               Toggle(isOn: /*@START_MENU_TOKEN@*/.constant(true)/*@END_MENU_TOKEN@*/, label: {
-                //                    Text("Closed Captions")
-                //                })
-                //                .tint(.indigo)
-                //                .padding(.horizontal, 500)
+                
+                Toggle(isOn: $scenarioOptions.captions) {
+                    Text("Captions")
+                }
+                .frame(width: 200)
+                .tint(.indigo)
             }
-            
-            //            Button("Open Immersive Space") {
-            //                Task
-            //                {
-            //                    await openImmersiveSpace(id:"ImmersiveView")
-            //                }
-            //            }
-            //
-            //            Button("Close Immersive Space") {
-            //                Task
-            //                {
-            //                    await dismissImmersiveSpace()
-            //                }
-            //            }
         }
         .onLoad {
             dismissWindow(id: "ResponseView")
             dismissWindow(id: "FeedbackView")
-            dismissWindow(id: "CafeBriefView")
+            dismissWindow(id: "BriefView")
         }
-        .padding()
     }
 }
 

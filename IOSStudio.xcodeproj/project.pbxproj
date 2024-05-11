@@ -11,6 +11,8 @@
 		6D7835312BC650E70064BDB3 /* ResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7835302BC650E70064BDB3 /* ResponseView.swift */; };
 		6D7835332BC654270064BDB3 /* Dialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7835322BC654270064BDB3 /* Dialogue.swift */; };
 		6D7835352BC654B00064BDB3 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7835342BC654B00064BDB3 /* ViewModifier.swift */; };
+		6D8A7D392BEF694300C1B51A /* ScenarioOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A7D382BEF694300C1B51A /* ScenarioOptions.swift */; };
+		6D8A7D3B2BEF695100C1B51A /* CafeDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A7D3A2BEF695100C1B51A /* CafeDialogue.swift */; };
 		6D9D19EE2BE8F0D100F25EB1 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */; };
 		6DCAE2022BDFA90F004FB7D4 /* BriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAE2012BDFA90F004FB7D4 /* BriefView.swift */; };
 		AD16CA262BCD91130023FE39 /* SpeechSynthezierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD16CA252BCD91130023FE39 /* SpeechSynthezierService.swift */; };
@@ -30,6 +32,8 @@
 		6D7835302BC650E70064BDB3 /* ResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseView.swift; sourceTree = "<group>"; };
 		6D7835322BC654270064BDB3 /* Dialogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialogue.swift; sourceTree = "<group>"; };
 		6D7835342BC654B00064BDB3 /* ViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		6D8A7D382BEF694300C1B51A /* ScenarioOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioOptions.swift; sourceTree = "<group>"; };
+		6D8A7D3A2BEF695100C1B51A /* CafeDialogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDialogue.swift; sourceTree = "<group>"; };
 		6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		6DCAE2012BDFA90F004FB7D4 /* BriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefView.swift; sourceTree = "<group>"; };
 		AD16CA252BCD91130023FE39 /* SpeechSynthezierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthezierService.swift; sourceTree = "<group>"; };
@@ -86,10 +90,12 @@
 				6D7835302BC650E70064BDB3 /* ResponseView.swift */,
 				6D1489BA2BD347E400678255 /* FeedbackView.swift */,
 				B8205F242BC0EE2800944A42 /* ImmersiveView.swift */,
+				6D8A7D3A2BEF695100C1B51A /* CafeDialogue.swift */,
 				6D7835322BC654270064BDB3 /* Dialogue.swift */,
 				6D7835342BC654B00064BDB3 /* ViewModifier.swift */,
 				6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */,
 				B812B0172BEDB71B0003BA64 /* ViewModel.swift */,
+				6D8A7D382BEF694300C1B51A /* ScenarioOptions.swift */,
 				B8205F262BC0EE2800944A42 /* ImageBasedLighting.skybox */,
 				B8205F282BC0EE2B00944A42 /* Assets.xcassets */,
 				B8205F2D2BC0EE2B00944A42 /* Info.plist */,
@@ -188,9 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D8A7D392BEF694300C1B51A /* ScenarioOptions.swift in Sources */,
 				B8205F232BC0EE2800944A42 /* HomeView.swift in Sources */,
 				6D7835352BC654B00064BDB3 /* ViewModifier.swift in Sources */,
 				6D9D19EE2BE8F0D100F25EB1 /* Feedback.swift in Sources */,
+				6D8A7D3B2BEF695100C1B51A /* CafeDialogue.swift in Sources */,
 				B8205F212BC0EE2800944A42 /* IOSStudioApp.swift in Sources */,
 				6DCAE2022BDFA90F004FB7D4 /* BriefView.swift in Sources */,
 				B8205F252BC0EE2800944A42 /* ImmersiveView.swift in Sources */,
