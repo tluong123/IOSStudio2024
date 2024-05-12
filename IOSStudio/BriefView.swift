@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BriefView: View {
-    
+    @Environment (ViewModel.self) var viewModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.openImmersiveSpace) var openImmersiveSpace

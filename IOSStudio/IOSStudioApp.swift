@@ -14,6 +14,7 @@ struct IOSStudioApp: App {
         
         WindowGroup(id: "BriefView") {
             BriefView().environmentObject(scenarioOptions)
+                .environment(viewModel)
         }
         .defaultSize(CGSize(width: 400, height: 400))
         

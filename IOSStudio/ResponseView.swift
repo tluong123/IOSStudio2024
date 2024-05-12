@@ -44,6 +44,7 @@ struct ResponseView: View {
                     Button(action: {
                         round += 1
                         restartTimer()
+                        
                         switch round {
                         case 2:
                             lastAnswer = 1

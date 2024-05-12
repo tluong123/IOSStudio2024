@@ -2,12 +2,11 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+
+
 struct ImmersiveView: View {
     @Environment (ViewModel.self) var viewModel
     // Entity to set an Anchor
-    @State public var waveAnimation: AnimationResource? = nil
-    @State public var baristaIdle: Entity? = nil
-
     @State var cafeEntity: Entity = {
         let floorAnchor = AnchorEntity(world: .zero)
       return floorAnchor
@@ -22,26 +21,21 @@ struct ImmersiveView: View {
                 
                 let characterAnimationsSceneEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
                 guard let waveModel = characterAnimationsSceneEntity.findEntity(named: "barista_waving") else { return }
-//                guard let angryModel = characterAnimationsSceneEntity.findEntity(named: "barista_angry") else { return }
-//                guard let idleModel = characterAnimationsSceneEntity.findEntity(named: "barista_idle") else { return }
-//               guard let happyModel = characterAnimationsSceneEntity.findEntity(named: "barista_thumbs_up") else { return }
-//               guard let pointModel = characterAnimationsSceneEntity.findEntity(named: "barista_point") else { return }
-//                guard let disappointModel = characterAnimationsSceneEntity.findEntity(named: "barista_disappoint") else { return }
+                guard let angryModel = characterAnimationsSceneEntity.findEntity(named: "barista_angry") else { return }
+                guard let happyModel = characterAnimationsSceneEntity.findEntity(named: "barista_thumbs_up") else { return }
+                guard let pointModel = characterAnimationsSceneEntity.findEntity(named: "barista_point") else { return }
+                guard let disappointedModel = characterAnimationsSceneEntity.findEntity(named: "barista_disappointed") else { return }
                 
-                guard let baristaIdle = cafeEntity.findEntity(named: "barista_idle") else { return }
-                
-                
-                guard let idleAnimationResource = waveModel.availableAnimations.first else { return }
-                
-                guard let waveAnimationResource = waveModel.availableAnimations.first else { return }
-                let waveAnimation = try AnimationResource.sequence(with: [waveAnimationResource, idleAnimationResource.repeat()])
-                playWaveSequence(baristaIdle: baristaIdle, idleAnimationResource: idleAnimationResource)
+                viewModel.baristaIdle = cafeEntity.findEntity(named: "barista_idle")
+                viewModel.idleAnimationResource = viewModel.baristaIdle?.availableAnimations.first
+                viewModel.waveAnimationResource = waveModel.availableAnimations.first
+                viewModel.angryAnimationResource = angryModel.availableAnimations.first
+                viewModel.happyAnimationResource = happyModel.availableAnimations.first
+                viewModel.pointAnimationResource = pointModel.availableAnimations.first
+                viewModel.disappointedAnimationResource = disappointedModel.availableAnimations.first
 
-                
-                Task {
-                    self.baristaIdle = baristaIdle
-                    self.waveAnimation = waveAnimation
-                }
+
+
             }  catch {
                     print("Error in RealityView: \(error)")
             }
@@ -51,15 +45,17 @@ struct ImmersiveView: View {
         }
     }
 }
-func playWaveSequence(baristaIdle: Entity?, idleAnimationResource: AnimationResource?) {
-    if let baristaIdle = baristaIdle, let idleAnimationResource = idleAnimationResource {
-        baristaIdle.playAnimation(idleAnimationResource.repeat())
+func playAnimRepeated(baristaIdle: Entity?, animationResource: AnimationResource?) {
+    if let baristaIdle = baristaIdle, let animationResource = animationResource {
+        baristaIdle.playAnimation(animationResource.repeat())
     }
 }
-func playDisappointAnim ()
-{
-    
+func playAnimSingle(baristaIdle: Entity?, animationResource: AnimationResource?) {
+    if let baristaIdle = baristaIdle, let animationResource = animationResource {
+        baristaIdle.playAnimation(animationResource)
+    }
 }
+
 #Preview {
     ImmersiveView()
 }
