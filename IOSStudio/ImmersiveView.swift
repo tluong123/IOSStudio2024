@@ -33,7 +33,8 @@ struct ImmersiveView: View {
                 viewModel.happyAnimationResource = happyModel.availableAnimations.first
                 viewModel.pointAnimationResource = pointModel.availableAnimations.first
                 viewModel.disappointedAnimationResource = disappointedModel.availableAnimations.first
-
+                
+                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
 
 
             }  catch {

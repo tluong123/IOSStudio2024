@@ -36,7 +36,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
         float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (0.80527484, 0.08709335, 0.22820759)
+        float3 xformOp:translate = (0.80527484, 0, 0.22820759)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -62,6 +62,7 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.15557235, 0.48286366, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -76,6 +77,76 @@ def Xform "Root"
         quatf xformOp:orient = (0.70441586, -0.7044162, 0.061628405, 0.06162843)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.8039715, 8.195639e-8, -3.113441)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "npc" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 2.9670594, 0)
+        }
+        prepend references = @npc.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.06162846, -0.06162846, 0.70441604, 0.70441604)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.38941246, 4.917383e-7, 1.2473935)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "npc1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 3.3161256, 0)
+        }
+        prepend references = @npc1.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.06162841, 0.061628465, 0.70441574, 0.70441633)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.9558479, 9.0524554e-7, 1.2129492)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "npc2" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 3.2288592, 0)
+        }
+        prepend references = @npc2.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.030843573, 0.030843602, 0.7064334, 0.70643413)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.95003396, 2.5331974e-7, 2.8835065)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "npc4" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 3.1415927, 0)
+        }
+        prepend references = @npc4.usdz@
+    )
+    {
+        quatf xformOp:orient = (-3.090861e-8, 3.0908627e-8, 0.7071066, 0.70710695)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.80473864, 8.195639e-8, 3.7421522)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "npc5" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 3.3161256, 0)
+        }
+        prepend references = @npc5.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.06162841, 0.061628465, 0.70441574, 0.70441633)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.5540757, 0.0000010803342, 2.1822937)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
