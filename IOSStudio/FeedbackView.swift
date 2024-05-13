@@ -11,7 +11,7 @@ struct FeedbackView: View {
     
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
     
     @State var feedbackText = "Fail"
     
@@ -28,27 +28,26 @@ struct FeedbackView: View {
         
         HStack {
             Button(action: {
-                Task
-                {
-                    await dismissImmersiveSpace()
                     openWindow(id: "HomeView")
-                    dismissWindow(id: "ResponseView")
-                }
+                    dismissWindow(id: "FeedbackView")
             }, label: {
                 Image(systemName: "xmark.circle")
                     .frame(width: 30, height: 30)
             })
             Button(action: {
-                openWindow(id: "ResponseView")
-                dismissWindow(id: "FeedbackView")
-                dismissWindow(id: "FeedbackView")
-
+                Task
+                {
+                    await openImmersiveSpace(id:"ImmersiveView")
+                    openWindow(id: "ResponseView")
+                    dismissWindow(id: "FeedbackView")
+                }
             }, label: {
                 Image(systemName: "gobackward")
                     .frame(width: 30, height: 30)
             })
         }
         .onLoad() {
+            dismissWindow(id: "ResponseView")
             if feedback.passed {
                 feedbackText = "Pass"
             }
