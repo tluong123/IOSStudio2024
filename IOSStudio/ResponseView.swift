@@ -376,15 +376,15 @@ struct ResponseView: View {
                 .buttonStyle(.borderedProminent)
                 
                 // setting up the slider
-                VStack {
-                    Text("Background Sound")
-                    Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1)
-                        .frame(width: 200)  // Adjust the width
-                        .onChange(of: backgroundMusicVolume) { newVolume in
-                            AudioManager.shared.setBackgroundMusicVolume(to: newVolume)
-                        }
-                }
-                .padding(.top,50)
+//                VStack {
+//                    Text("Background Sound")
+//                    Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1)
+//                        .frame(width: 200)  // Adjust the width
+//                        .onChange(of: backgroundMusicVolume) {_, newVolume in
+//                            AudioManager.shared.setBackgroundMusicVolume(to: newVolume)
+//                        }
+//                }
+//                .padding(.top,50)
             }
             .font(.title2)
             .padding()
