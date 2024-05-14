@@ -35,7 +35,7 @@
 		6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		6DCAE2012BDFA90F004FB7D4 /* BriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefView.swift; sourceTree = "<group>"; };
 		AD16CA252BCD91130023FE39 /* SpeechSynthezierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthezierService.swift; sourceTree = "<group>"; };
-		ADD16B1B2BE9FED300967F16 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = ../AudioManager.swift; sourceTree = "<group>"; };
+		ADD16B1B2BE9FED300967F16 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		B812B0172BEDB71B0003BA64 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B8205F192BC0EE2800944A42 /* IOSStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8205F1D2BC0EE2800944A42 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -60,6 +60,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D22A39E2BF3312F0002DB53 /* Classes and Structs */ = {
+			isa = PBXGroup;
+			children = (
+				6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */,
+				6D7835342BC654B00064BDB3 /* ViewModifier.swift */,
+				B812B0172BEDB71B0003BA64 /* ViewModel.swift */,
+				6D8A7D382BEF694300C1B51A /* ScenarioOptions.swift */,
+				AD16CA252BCD91130023FE39 /* SpeechSynthezierService.swift */,
+				ADD16B1B2BE9FED300967F16 /* AudioManager.swift */,
+			);
+			path = "Classes and Structs";
+			sourceTree = "<group>";
+		};
 		B8205F102BC0EE2800944A42 = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +93,6 @@
 		B8205F1B2BC0EE2800944A42 /* IOSStudio */ = {
 			isa = PBXGroup;
 			children = (
-				AD16CA252BCD91130023FE39 /* SpeechSynthezierService.swift */,
-				ADD16B1B2BE9FED300967F16 /* AudioManager.swift */,
 				B8205F202BC0EE2800944A42 /* IOSStudioApp.swift */,
 				B8205F222BC0EE2800944A42 /* HomeView.swift */,
 				6DCAE2012BDFA90F004FB7D4 /* BriefView.swift */,
@@ -89,10 +100,7 @@
 				6D1489BA2BD347E400678255 /* FeedbackView.swift */,
 				B8205F242BC0EE2800944A42 /* ImmersiveView.swift */,
 				6D8A7D3A2BEF695100C1B51A /* CafeDialogue.swift */,
-				6D7835342BC654B00064BDB3 /* ViewModifier.swift */,
-				6D9D19ED2BE8F0D100F25EB1 /* Feedback.swift */,
-				B812B0172BEDB71B0003BA64 /* ViewModel.swift */,
-				6D8A7D382BEF694300C1B51A /* ScenarioOptions.swift */,
+				6D22A39E2BF3312F0002DB53 /* Classes and Structs */,
 				B8205F262BC0EE2800944A42 /* ImageBasedLighting.skybox */,
 				B8205F282BC0EE2B00944A42 /* Assets.xcassets */,
 				B8205F2D2BC0EE2B00944A42 /* Info.plist */,

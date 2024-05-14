@@ -6,7 +6,7 @@ class AudioManager {
     private var audioPlayer: AVAudioPlayer?
     private var backgroundAudioPlayer: AVAudioPlayer?
 
-    private init() {}  // Singleton pattern
+    private init() {} 
 
     func playSound(named soundFileName: String) {
         guard let asset = NSDataAsset(name: soundFileName),

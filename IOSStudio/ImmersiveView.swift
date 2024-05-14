@@ -15,6 +15,10 @@ struct ImmersiveView: View {
     var body: some View {
         RealityView {content in
             do{
+                for entity in content.entities {
+                    content.remove(entity)
+                }
+                
                 let scene = try await Entity(named: "Scene", in: realityKitContentBundle)
                 cafeEntity.addChild(scene)
                     content.add(cafeEntity)

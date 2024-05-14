@@ -1,9 +1,3 @@
-//
-//  CafeDialogue.swift
-//  DialogueTest
-//
-//
-
 import Foundation
 
 class CafeDialogue {

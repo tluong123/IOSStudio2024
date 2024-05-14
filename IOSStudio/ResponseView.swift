@@ -18,7 +18,6 @@ struct ResponseView: View {
     @State public var question = "Hi, what can I get you?"
     @State private var round = 1
     @State private var lastAnswer = 0
-    
     @State private var questionTimeRemaining = 9
     let questionTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -27,26 +26,20 @@ struct ResponseView: View {
     @State var roundInProgress = true
     @State var backgroundMusicVolume: Float = 0.5  // Default volume
     
-    
     let dialogue = CafeDialogue()
     
     var body: some View {
-        
         VStack {
             VStack {
                 Text(question)
                     .opacity(scenarioOptions.captions ? 1 : 0)
                     .multilineTextAlignment(.center)
-                    .onChange(of: question) { _, newQuestion in
-                    }
-                
                 Spacer()
                 VStack {
                     //button 1
                     Button(action: {
                         round += 1
                         restartTimer()
-                        
                         switch round {
                         case 2:
                             playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
@@ -68,7 +61,7 @@ struct ResponseView: View {
                                 AudioManager.shared.playSound(named: "Question5")
                                 
                             case 2:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.pointAnimationResource)
                                 lastAnswer = 4
                                 question = dialogue.round3Question4
                                 button1 = dialogue.round3Question4Response10
@@ -76,7 +69,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question4Response12
                                 AudioManager.shared.playSound(named: "Question4")
                             case 3:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 7
                                 question = dialogue.round3Question7
                                 button1 = dialogue.round3Question7Response19
@@ -109,19 +102,19 @@ struct ResponseView: View {
                                 feedback.passed = true
                                 feedback.feedback = "You were about to pay for the soup, but you remembered your task at the last minute. Try getting to the point next time."
                             case 4:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 question = dialogue.round4Question10
                                 AudioManager.shared.playSound(named: "Question14")
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 5:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 question = dialogue.round4Question13
                                 AudioManager.shared.playSound(named: "Question14")
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 6:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 question = dialogue.round4Question16
                                 AudioManager.shared.playSound(named: "Question20")
                                 feedback.passed = true
@@ -186,7 +179,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question5Response15
                                 AudioManager.shared.playSound(named: "Question12")
                             case 3:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 8
                                 question = dialogue.round3Question8
                                 button1 = dialogue.round3Question8Response22
@@ -269,7 +262,7 @@ struct ResponseView: View {
                         restartTimer()
                         switch round {
                         case 2:
-                            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.pointAnimationResource)
                             lastAnswer = 3
                             question = dialogue.round2Question3
                             button1 = dialogue.round2Question3Response7
@@ -287,7 +280,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question3Response9
                                 AudioManager.shared.playSound(named: "Question11")
                             case 2:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 6
                                 question = dialogue.round3Question6
                                 button1 = dialogue.round3Question6Response16
@@ -295,7 +288,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question6Response18
                                 AudioManager.shared.playSound(named: "Question13")
                             case 3:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 9
                                 question = dialogue.round3Question9
                                 button1 = dialogue.round3Question9Response25
@@ -374,17 +367,6 @@ struct ResponseView: View {
                 }
                 .opacity(shouldHideResponseButtons ? 0 : 1)
                 .buttonStyle(.borderedProminent)
-                
-                // setting up the slider
-//                VStack {
-//                    Text("Background Sound")
-//                    Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1)
-//                        .frame(width: 200)  // Adjust the width
-//                        .onChange(of: backgroundMusicVolume) {_, newVolume in
-//                            AudioManager.shared.setBackgroundMusicVolume(to: newVolume)
-//                        }
-//                }
-//                .padding(.top,50)
             }
             .font(.title2)
             .padding()
@@ -405,9 +387,6 @@ struct ResponseView: View {
         .onAppear() {
             setInitialState()
         }
-        
-        //            Spacer()
-        
         HStack {
             Spacer()
             Button(action: {
@@ -453,7 +432,7 @@ struct ResponseView: View {
         .padding()
         .onLoad {
             dismissWindow(id: "FeedbackView")
-            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+            playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
         }
         .onReceive(questionTimer) { time in
             if roundInProgress {
@@ -474,12 +453,9 @@ struct ResponseView: View {
                 }
             }
         }
-        
     }
     
     private func setInitialState() {
-        // Set the initial question and speak it
-        //        question = dialogue.round1Question1
         button1 = dialogue.round1Question1Response1
         button2 = dialogue.round1Question1Response2
         button3 = dialogue.round1Question1Response3
@@ -488,10 +464,7 @@ struct ResponseView: View {
     
     
     private func updateState(from button: String) {
-        // Logic to determine the next question based on button press
-        // Dummy logic here: increment the round and update the question randomly
         round += 1
-        // You would update 'question' and 'button1', 'button2', 'button3' here based on your game logic
         SpeechSynthesizerService.shared.speak(question)
     }
     
@@ -508,7 +481,6 @@ struct ResponseView: View {
     }
 }
 
-// Preview for your SwiftUI view
 struct ResponseView_Previews: PreviewProvider {
     static var previews: some View {
         ResponseView()
