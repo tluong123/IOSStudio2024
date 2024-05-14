@@ -27,7 +27,7 @@ def Xform "Root"
     }
 
     def "Cafeteria" (
-        active = true
+        active = false
         customData = {
             float3 rotationEulerHint = (0, 3.1415927, 0)
         }
@@ -147,6 +147,20 @@ def Xform "Root"
         quatf xformOp:orient = (-0.06162841, 0.061628465, 0.70441574, 0.70441633)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.5540757, 0.0000010803342, 2.1822937)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "new_cafe" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (4.712388, 3.1415927, 0)
+        }
+        prepend references = @new cafe.usdz@
+    )
+    {
+        quatf xformOp:orient = (-3.090861e-8, 3.0908627e-8, 0.7071066, 0.70710695)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0.80527, 0, 0.22821)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
