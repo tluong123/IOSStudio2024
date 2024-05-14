@@ -23,7 +23,7 @@ struct IOSStudioApp: App {
                 .environment(viewModel)
                 .environmentObject(scenarioOptions)
         }
-        .defaultSize(CGSize(width: 520, height: 400))
+        .defaultSize(CGSize(width: 520, height: 600))
         
         WindowGroup (id: "FeedbackView") {
             FeedbackView().environmentObject(feedback)

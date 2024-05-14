@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BriefView: View {
-    @Environment (ViewModel.self) var viewModel
+    @Environment(ViewModel.self) var viewModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
@@ -14,43 +14,39 @@ struct BriefView: View {
             Text("Your Brief")
                 .font(.title)
             
-            if (scenarioOptions.scenario == "Cafe") {
+            if scenarioOptions.scenario == "Cafe" {
                 Text("Order a latte on a budget of $4.50")
                     .padding()
                     .multilineTextAlignment(.center)
             }
             HStack {
                 Button(action: {
-                    Task
-                    {
-                        openWindow(id: "HomeView")
-                        dismissWindow(id: "BriefView")
-                    }
+                    openWindow(id: "HomeView")
+                    dismissWindow(id: "BriefView")
                 }, label: {
                     Image(systemName: "xmark.circle")
                         .frame(width: 30, height: 30)
                 })
                 Button(action: {
-                    Task
-                    {
-                        await openImmersiveSpace(id:"ImmersiveView")
+                    Task {
+                        await openImmersiveSpace(id: "ImmersiveView")
                         openWindow(id: "ResponseView")
                         dismissWindow(id: "BriefView")
                     }
-                    
                 }, label: {
                     Image(systemName: "arrowshape.right.circle")
                         .frame(width: 30, height: 30)
                 })
             }
+            .onLoad {
+                dismissWindow(id: "HomeView")
+            }
         }
-        
         .tint(.indigo)
         .buttonStyle(.borderedProminent)
         .onLoad {
             dismissWindow(id: "HomeView")
         }
-        
     }
 }
 

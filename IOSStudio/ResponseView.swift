@@ -25,6 +25,8 @@ struct ResponseView: View {
     @State var shouldHideResponseButtons = true
     @State var shouldHideProceedButton = true
     @State var roundInProgress = true
+    @State var backgroundMusicVolume: Float = 0.5  // Default volume
+    
     
     let dialogue = CafeDialogue()
     
@@ -37,7 +39,7 @@ struct ResponseView: View {
                     .multilineTextAlignment(.center)
                     .onChange(of: question) { _, newQuestion in
                     }
-                    
+                
                 Spacer()
                 VStack {
                     //button 1
@@ -372,63 +374,86 @@ struct ResponseView: View {
                 }
                 .opacity(shouldHideResponseButtons ? 0 : 1)
                 .buttonStyle(.borderedProminent)
+                
+                // setting up the slider
+                VStack {
+                    Text("Background Sound")
+                    Slider(value: $backgroundMusicVolume, in: 0...1, step: 0.1)
+                        .frame(width: 200)  // Adjust the width
+                        .onChange(of: backgroundMusicVolume) { newVolume in
+                            AudioManager.shared.setBackgroundMusicVolume(to: newVolume)
+                        }
+                }
+                .padding(.top,50)
             }
             .font(.title2)
             .padding()
             .tint(.indigo)
             .onAppear() {
                 setInitialState()
+                AudioManager.shared.playBackgroundMusic(named: "BackgroundSound")
+                AudioManager.shared.setBackgroundMusicVolume(to: backgroundMusicVolume)
             }
             
-//            Spacer()
+            .onDisappear {
+                AudioManager.shared.stopBackgroundMusic()
+            }
+        }
+        .font(.title2)
+        .padding()
+        .tint(.indigo)
+        .onAppear() {
+            setInitialState()
+        }
+        
+        //            Spacer()
+        
+        HStack {
+            Spacer()
+            Button(action: {
+                Task
+                {
+                    await dismissImmersiveSpace()
+                    openWindow(id: "HomeView")
+                    dismissWindow(id: "ResponseView")
+                }
+            }, label: {
+                Image(systemName: "xmark.circle")
+                    .frame(width: 30, height: 30)
+            })
+            .opacity(shouldHideProceedButton ? 1 : 0)
             
-            HStack {
-                Spacer()
-                Button(action: {
-                    Task
-                    {
-                        await dismissImmersiveSpace()
-                        openWindow(id: "HomeView")
-                        dismissWindow(id: "ResponseView")
-                    }
-                }, label: {
-                    Image(systemName: "xmark.circle")
-                        .frame(width: 30, height: 30)
-                })
-                .opacity(shouldHideProceedButton ? 1 : 0)
-                
-                Spacer()
-                
-                Text("\(questionTimeRemaining)")
-                    .padding()
-                    .background(.indigo)
-                    .foregroundStyle(.white)
-                    .font(.title2)
-                    .cornerRadius(1000)
-                    .opacity(shouldHideResponseButtons ? 0 : 1)
-                Spacer()
-                Button(action: {
-                    Task
-                    {
-                        await dismissImmersiveSpace()
-                        openWindow(id: "FeedbackView")
-                        dismissWindow(id: "ResponseView")
-                    }
-                }, label: {
-                    Image(systemName: "arrowshape.right.circle")
-                        .frame(width: 30, height: 30)
-                })
-                .opacity(shouldHideProceedButton ? 0 : 1)
-                Spacer()
-            }
-            .font(.title)
-            .tint(.indigo)
-            .buttonStyle(.borderedProminent)
-            .padding()
-            .onLoad {
-                dismissWindow(id: "FeedbackView")
-                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
-            }
+            Spacer()
+            
+            Text("\(questionTimeRemaining)")
+                .padding()
+                .background(.indigo)
+                .foregroundStyle(.white)
+                .font(.title2)
+                .cornerRadius(1000)
+                .opacity(shouldHideResponseButtons ? 0 : 1)
+            Spacer()
+            Button(action: {
+                Task
+                {
+                    await dismissImmersiveSpace()
+                    openWindow(id: "FeedbackView")
+                    dismissWindow(id: "ResponseView")
+                }
+            }, label: {
+                Image(systemName: "arrowshape.right.circle")
+                    .frame(width: 30, height: 30)
+            })
+            .opacity(shouldHideProceedButton ? 0 : 1)
+            Spacer()
+        }
+        .font(.title)
+        .tint(.indigo)
+        .buttonStyle(.borderedProminent)
+        .padding()
+        .onLoad {
+            dismissWindow(id: "FeedbackView")
+            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
         }
         .onReceive(questionTimer) { time in
             if roundInProgress {
