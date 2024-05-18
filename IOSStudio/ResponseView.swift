@@ -69,7 +69,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question4Response12
                                 AudioManager.shared.playSound(named: "Question4")
                             case 3:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+//                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 7
                                 question = dialogue.round3Question7
                                 button1 = dialogue.round3Question7Response19
@@ -102,25 +102,25 @@ struct ResponseView: View {
                                 feedback.passed = true
                                 feedback.feedback = "You were about to pay for the soup, but you remembered your task at the last minute. Try getting to the point next time."
                             case 4:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question10
                                 AudioManager.shared.playSound(named: "Question14")
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 5:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question13
                                 AudioManager.shared.playSound(named: "Question14")
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 6:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question16
                                 AudioManager.shared.playSound(named: "Question20")
                                 feedback.passed = true
                                 feedback.feedback = "You almost antagonised the barista, but you ordered the right coffee."
                             case 7:
-                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
+//                                playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question19
                                 AudioManager.shared.playSound(named: "Question15")
                                 feedback.passed = false
@@ -153,7 +153,7 @@ struct ResponseView: View {
                         restartTimer()
                         switch round {
                         case 2:
-                            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.disappointedAnimationResource)
+//                            playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.disappointedAnimationResource)
                             lastAnswer = 2
                             question = dialogue.round2Question2
                             button1 = dialogue.round2Question2Response4
@@ -179,7 +179,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question5Response15
                                 AudioManager.shared.playSound(named: "Question12")
                             case 3:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+//                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 8
                                 question = dialogue.round3Question8
                                 button1 = dialogue.round3Question8Response22
@@ -280,7 +280,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question3Response9
                                 AudioManager.shared.playSound(named: "Question11")
                             case 2:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+//                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 6
                                 question = dialogue.round3Question6
                                 button1 = dialogue.round3Question6Response16
@@ -288,7 +288,7 @@ struct ResponseView: View {
                                 button3 = dialogue.round3Question6Response18
                                 AudioManager.shared.playSound(named: "Question13")
                             case 3:
-                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
+//                                playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                                 lastAnswer = 9
                                 question = dialogue.round3Question9
                                 button1 = dialogue.round3Question9Response25
