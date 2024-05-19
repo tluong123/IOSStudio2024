@@ -7,18 +7,18 @@ import RealityKitContent
 struct ImmersiveView: View {
     @Environment (ViewModel.self) var viewModel
     
-    @State var cafeEntity: Entity = {
-        let floorAnchor = AnchorEntity(.head)
-        floorAnchor.position = [0, -1.8, 0 ]
-      return floorAnchor
-    }()
+//    @State var cafeEntity: Entity = {
+//        let floorAnchor = AnchorEntity(.head)
+//        floorAnchor.position = [0, -1.8, 0 ]
+//      return floorAnchor
+//    }()
     
     var body: some View {
         RealityView {content in
             do{
                 let scene = try await Entity(named: "Scene", in: realityKitContentBundle)
-                cafeEntity.addChild(scene)
-                content.add(cafeEntity)
+                //cafeEntity.addChild(scene)
+                content.add(scene)
                 
                 let characterAnimationsSceneEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
                 guard let waveModel = characterAnimationsSceneEntity.findEntity(named: "barista_waving") else { return }
