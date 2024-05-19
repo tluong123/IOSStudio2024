@@ -7,7 +7,7 @@ struct ResponseView: View {
     @Environment (ViewModel.self) var viewModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
     @EnvironmentObject var feedback: Feedback
     @EnvironmentObject var scenarioOptions: ScenarioOptions

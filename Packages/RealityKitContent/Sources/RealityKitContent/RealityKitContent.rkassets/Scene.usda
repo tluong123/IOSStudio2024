@@ -26,36 +26,6 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "Cafeteria" (
-        active = false
-        customData = {
-            float3 rotationEulerHint = (0, 3.1415927, 0)
-        }
-        prepend references = @Cafeteria.usdz@
-    )
-    {
-        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (0.80527484, 0, 0.22820759)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def Material "Material"
-    {
-        prepend token outputs:mtlx:surface.connect = </Root/Material/PreviewSurface.outputs:out>
-        token outputs:realitykit:vertex
-        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (299.25, 99.5)
-        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
-
-        def Shader "PreviewSurface"
-        {
-            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
-            token outputs:out
-            float2 ui:nodegraph:node:pos = (74.25, 99.5)
-            float2 ui:nodegraph:node:size = (148.5, 199)
-        }
-    }
-
     def "GridMaterial" (
         active = true
         prepend references = @Materials/GridMaterial.usda@
@@ -71,13 +41,25 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (4.712388, 0.17453292, -7.565518e-9)
         }
-        prepend references = @barista idle.usdz@
+        references = @barista idle.usdz@
     )
     {
         quatf xformOp:orient = (0.70441586, -0.7044162, 0.061628405, 0.06162843)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.8039715, 8.195639e-8, -3.113441)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Light" (
+            active = false
+        )
+        {
+        }
+
+        over "Camera" (
+            active = false
+        )
+        {
+        }
     }
 
     def "npc" (

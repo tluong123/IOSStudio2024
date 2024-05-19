@@ -6,22 +6,19 @@ import RealityKitContent
 
 struct ImmersiveView: View {
     @Environment (ViewModel.self) var viewModel
-    // Entity to set an Anchor
+    
     @State var cafeEntity: Entity = {
-        let floorAnchor = AnchorEntity(world: .zero)
+        let floorAnchor = AnchorEntity(.head)
+        floorAnchor.position = [0, -1.8, 0 ]
       return floorAnchor
     }()
     
     var body: some View {
         RealityView {content in
             do{
-                for entity in content.entities {
-                    content.remove(entity)
-                }
-                
                 let scene = try await Entity(named: "Scene", in: realityKitContentBundle)
                 cafeEntity.addChild(scene)
-                    content.add(cafeEntity)
+                content.add(cafeEntity)
                 
                 let characterAnimationsSceneEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
                 guard let waveModel = characterAnimationsSceneEntity.findEntity(named: "barista_waving") else { return }
@@ -30,7 +27,7 @@ struct ImmersiveView: View {
                 guard let pointModel = characterAnimationsSceneEntity.findEntity(named: "barista_point") else { return }
                 guard let disappointedModel = characterAnimationsSceneEntity.findEntity(named: "barista_disappointed") else { return }
                 
-                viewModel.baristaIdle = cafeEntity.findEntity(named: "barista_idle")
+                viewModel.baristaIdle = scene.findEntity(named: "barista_idle")
                 viewModel.idleAnimationResource = viewModel.baristaIdle?.availableAnimations.first
                 viewModel.waveAnimationResource = waveModel.availableAnimations.first
                 viewModel.angryAnimationResource = angryModel.availableAnimations.first
