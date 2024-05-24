@@ -7,11 +7,11 @@ import RealityKitContent
 struct ImmersiveView: View {
     @Environment (ViewModel.self) var viewModel
     
-//    @State var cafeEntity: Entity = {
-//        let floorAnchor = AnchorEntity(.head)
-//        floorAnchor.position = [0, -1.8, 0 ]
-//      return floorAnchor
-//    }()
+    //    @State var cafeEntity: Entity = {
+    //        let floorAnchor = AnchorEntity(.head)
+    //        floorAnchor.position = [0, -1.8, 0 ]
+    //      return floorAnchor
+    //    }()
     
     var body: some View {
         RealityView {content in
@@ -36,17 +36,23 @@ struct ImmersiveView: View {
                 viewModel.disappointedAnimationResource = disappointedModel.availableAnimations.first
                 
                 playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
-
-
+                
+                
             }  catch {
-                    print("Error in RealityView: \(error)")
+                print("Error in RealityView: \(error)")
             }
-
-
             
+        } .onAppear {
+            AudioManager.shared.playBackgroundMusic()
+            AudioManager.shared.setBackgroundMusicVolume(to: 0.5)  // Set to a default volume
         }
+        .onDisappear {
+            AudioManager.shared.stopBackgroundMusic()
+        }
+        
     }
 }
+
 func playAnimRepeated(baristaIdle: Entity?, animationResource: AnimationResource?) {
     if let baristaIdle = baristaIdle, let animationResource = animationResource {
         baristaIdle.playAnimation(animationResource.repeat())
@@ -57,6 +63,7 @@ func playAnimSingle(baristaIdle: Entity?, animationResource: AnimationResource?)
         baristaIdle.playAnimation(animationResource)
     }
 }
+
 
 #Preview {
     ImmersiveView()

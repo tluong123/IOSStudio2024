@@ -371,15 +371,15 @@ struct ResponseView: View {
             .font(.title2)
             .padding()
             .tint(.indigo)
-            .onAppear() {
-                setInitialState()
-                AudioManager.shared.playBackgroundMusic(named: "BackgroundSound")
-                AudioManager.shared.setBackgroundMusicVolume(to: backgroundMusicVolume)
-            }
-            
-            .onDisappear {
-                AudioManager.shared.stopBackgroundMusic()
-            }
+//            .onAppear() {
+//                setInitialState()
+//                AudioManager.shared.playBackgroundMusic(named: "BackgroundSound")
+//                AudioManager.shared.setBackgroundMusicVolume(to: backgroundMusicVolume)
+//            }
+//            
+//            .onDisappear {
+//                AudioManager.shared.stopBackgroundMusic()
+//            }
         }
         .font(.title2)
         .padding()
