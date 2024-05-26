@@ -22,6 +22,11 @@ class ViewModel {
     var waveAnimationResource: AnimationResource? = nil
     var disappointedAnimationResource: AnimationResource? = nil
     var happyAnimationResource: AnimationResource? = nil
+    var npcAnimationResource: AnimationResource? = nil
+    var npc1AnimationResource: AnimationResource? = nil
+    var npc2AnimationResource: AnimationResource? = nil
+    var npc3AnimationResource: AnimationResource? = nil
+    var npc4AnimationResource: AnimationResource? = nil
 }
 
 //          playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.disappointedAnimationResource) THIS IS FOR REPEATED ANIMATIONS
