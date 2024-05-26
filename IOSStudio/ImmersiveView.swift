@@ -46,14 +46,14 @@ struct ImmersiveView: View {
                 viewModel.npcAnimationResource = npc.availableAnimations.first
                 viewModel.npc1AnimationResource = npc1.availableAnimations.first
                 viewModel.npc2AnimationResource = npc2.availableAnimations.first
-//                viewModel.npc3AnimationResource = npc3.availableAnimations.first
-//                viewModel.npc4AnimationResource = npc4.availableAnimations.first
+                viewModel.npc3AnimationResource = npc3.availableAnimations.first
+                viewModel.npc4AnimationResource = npc4.availableAnimations.first
                 
                 playAnimRepeated(baristaIdle: npc, animationResource: viewModel.npcAnimationResource)
                 playAnimRepeated(baristaIdle: npc1, animationResource: viewModel.npc1AnimationResource)
                 playAnimRepeated(baristaIdle: npc2, animationResource: viewModel.npc2AnimationResource)
-//                playAnimRepeated(baristaIdle: npc3, animationResource: viewModel.npcAnimationResource)
-//                playAnimRepeated(baristaIdle: npc4, animationResource: viewModel.npc1AnimationResource)
+                playAnimRepeated(baristaIdle: npc3, animationResource: viewModel.npc3AnimationResource)
+                playAnimRepeated(baristaIdle: npc4, animationResource: viewModel.npc4AnimationResource)
                 
                 playAnimRepeated(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.idleAnimationResource)
                 
