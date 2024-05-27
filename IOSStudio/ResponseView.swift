@@ -87,36 +87,54 @@ struct ResponseView: View {
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question1
                                 AudioManager.shared.playSound(named: "Question14")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You were presented with the soup option but still kept the conversation centred on coffee. You successfully ordered a Medium Brewster's Blend."
                             case 2:
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question4
                                 AudioManager.shared.playSound(named: "Question16")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You almost ordered the soup, but you came to your senses. Though you didn't specify the coffee by name, you got there in the end."
                             case 3:
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.pointAnimationResource)
                                 question = dialogue.round4Question7
                                 AudioManager.shared.playSound(named: "Question18")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You were about to pay for the soup, but you remembered your task at the last minute. Try getting to the point next time."
                             case 4:
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question10
                                 AudioManager.shared.playSound(named: "Question14")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 5:
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question13
                                 AudioManager.shared.playSound(named: "Question14")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You kept the barista waiting, but you ordered the right coffee. Nice work!"
                             case 6:
                                 playAnimSingle(baristaIdle: viewModel.baristaIdle, animationResource: viewModel.happyAnimationResource)
                                 question = dialogue.round4Question16
                                 AudioManager.shared.playSound(named: "Question20")
+                                //Sound
+                                                                AudioManager.shared.playSound(named: "Sound1", duration: 4)
+                                                                //
                                 feedback.passed = true
                                 feedback.feedback = "You almost antagonised the barista, but you ordered the right coffee."
                             case 7:

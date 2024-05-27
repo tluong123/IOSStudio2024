@@ -1,11 +1,13 @@
 import AVFoundation
 import UIKit
+import SwiftUI
 
 class AudioManager {
     static let shared = AudioManager()
     private var audioPlayer: AVAudioPlayer?
+    private var secondaryAudioPlayer: AVAudioPlayer?
     private var backgroundAudioPlayer: AVAudioPlayer?
-    private var useFirstSoundtrack = true  // State variable to toggle between soundtracks
+    @AppStorage("useFirstSoundtrack") private var useFirstSoundtrack = true  // State variable to toggle between soundtracks
 
     private init() {}
 
@@ -17,6 +19,19 @@ class AudioManager {
         }
         self.audioPlayer = audioPlayer
         self.audioPlayer?.play()
+    }
+
+    func playSound(named soundFileName: String, duration: TimeInterval) {
+        guard let asset = NSDataAsset(name: soundFileName),
+              let secondaryAudioPlayer = try? AVAudioPlayer(data: asset.data) else {
+            print("Audio file not found")
+            return
+        }
+        self.secondaryAudioPlayer = secondaryAudioPlayer
+        self.secondaryAudioPlayer?.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.secondaryAudioPlayer?.stop()
+        }
     }
 
     func playBackgroundMusic() {
